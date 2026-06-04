@@ -1,0 +1,51 @@
+import { SalaryRecord } from "@/types/salary";
+
+export const salaries: SalaryRecord[] = [
+  {
+    id: "1",
+    company: "Google",
+    companySlug: "google",
+    role: "Software Engineer",
+    level: "L4",
+    location: "Bangalore",
+    experience: "3 Years",
+    baseSalary: 3200000,
+    bonus: 400000,
+    stock: 800000,
+    totalCompensation: 4400000,
+    currency: "INR",
+    workType: "Hybrid",
+  },
+
+  {
+    id: "2",
+    company: "Amazon",
+    companySlug: "amazon",
+    role: "Frontend Engineer",
+    level: "SDE 2",
+    location: "Hyderabad",
+    experience: "4 Years",
+    baseSalary: 2800000,
+    bonus: 300000,
+    stock: 700000,
+    totalCompensation: 3800000,
+    currency: "INR",
+    workType: "Onsite",
+  },
+
+  {
+    id: "3",
+    company: "Microsoft",
+    companySlug: "microsoft",
+    role: "Product Engineer",
+    level: "63",
+    location: "Remote",
+    experience: "5 Years",
+    baseSalary: 3500000,
+    bonus: 500000,
+    stock: 1000000,
+    totalCompensation: 5000000,
+    currency: "INR",
+    workType: "Remote",
+  },
+];
