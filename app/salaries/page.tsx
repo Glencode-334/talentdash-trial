@@ -8,7 +8,38 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 import { Card } from "@/components/ui/Card";
 
-export default function SalariesPage() {
+import { FilterBar } from "@/components/features/FilterBar";
+
+type SalariesPageProps = {
+  searchParams: Promise<{
+    role?: string;
+    location?: string;
+  }>;
+};
+
+export default async function SalariesPage({
+  searchParams,
+}: SalariesPageProps) {
+
+  const params = await searchParams;
+
+  const filteredSalaries =
+    salaries.filter((salary) => {
+
+      const roleMatch =
+        !params.role ||
+        salary.role === params.role;
+
+      const locationMatch =
+        !params.location ||
+        salary.location ===
+          params.location;
+
+      return (
+        roleMatch &&
+        locationMatch
+      );
+    });
 
   return (
 
@@ -20,6 +51,8 @@ export default function SalariesPage() {
           title="Salary Intelligence"
           description="Explore compensation insights from top tech companies."
         />
+
+        <FilterBar />
 
         <Card>
 
@@ -57,41 +90,60 @@ export default function SalariesPage() {
 
               <tbody>
 
-                {salaries.map((salary) => (
+                {filteredSalaries.length === 0 ? (
 
-                  <tr
-                    key={salary.id}
-                    className="border-b border-[#F1F1F1]"
-                  >
+                  <tr>
 
-                    <td className="px-6 py-5 font-medium">
-                      {salary.company}
-                    </td>
+                    <td
+                      colSpan={5}
+                      className="px-6 py-16 text-center text-[#6A6A6A]"
+                    >
 
-                    <td className="px-6 py-5">
-                      {salary.role}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      {salary.level}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      {salary.location}
-                    </td>
-
-                    <td className="px-6 py-5 font-semibold text-[#16A34A]">
-
-                      {formatCurrency(
-                        salary.totalCompensation,
-                        salary.currency
-                      )}
+                      No salary records found for the selected filters.
 
                     </td>
 
                   </tr>
 
-                ))}
+                ) : (
+
+                  filteredSalaries.map((salary) => (
+
+                    <tr
+                      key={salary.id}
+                      className="border-b border-[#F1F1F1]"
+                    >
+
+                      <td className="px-6 py-5 font-medium">
+                        {salary.company}
+                      </td>
+
+                      <td className="px-6 py-5">
+                        {salary.role}
+                      </td>
+
+                      <td className="px-6 py-5">
+                        {salary.level}
+                      </td>
+
+                      <td className="px-6 py-5">
+                        {salary.location}
+                      </td>
+
+                      <td className="px-6 py-5 font-semibold text-[#16A34A]">
+
+                        {formatCurrency(
+                          salary.totalCompensation,
+                          salary.currency
+                        )}
+
+                      </td>
+
+                    </tr>
+
+                  ))
+
+                )}
 
               </tbody>
 
