@@ -14,6 +14,7 @@ type SalariesPageProps = {
   searchParams: Promise<{
     role?: string;
     location?: string;
+    sort?: string;
   }>;
 };
 

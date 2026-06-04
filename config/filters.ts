@@ -3,6 +3,8 @@ export const roleOptions = [
   "Software Engineer",
   "Frontend Engineer",
   "Product Engineer",
+  "Backend Engineer",
+  "Data Engineer"
 ];
 
 export const locationOptions = [
@@ -10,4 +12,12 @@ export const locationOptions = [
   "Bangalore",
   "Hyderabad",
   "Remote",
+  "Noida",
+  "Gurgaon"
+];
+
+export const sortOptions = [
+  "Default",
+  "High to Low",
+  "Low to High",
 ];

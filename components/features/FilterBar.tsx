@@ -8,6 +8,7 @@ import {
 import {
   roleOptions,
   locationOptions,
+  sortOptions,
 } from "@/config/filters";
 
 export function FilterBar() {
@@ -23,9 +24,13 @@ export function FilterBar() {
   const selectedLocation =
     searchParams.get("location") ?? "All";
 
+  const selectedSort =
+  searchParams.get("sort") ?? "Default";
+  
   function updateFilters(
     role: string,
-    location: string
+    location: string,
+    sort: string
   ) {
 
     const params =
@@ -42,9 +47,12 @@ export function FilterBar() {
       );
     }
 
+    if (sort !== "Default") {
+      params.set("sort", sort);
+    }
+
     const query =
       params.toString();
-
     router.push(
       query
         ? `/salaries?${query}`
@@ -62,7 +70,8 @@ export function FilterBar() {
 
           updateFilters(
             event.target.value,
-            selectedLocation
+            selectedLocation,
+            selectedSort
           )
 
         }
@@ -90,7 +99,8 @@ export function FilterBar() {
 
           updateFilters(
             selectedRole,
-            event.target.value
+            event.target.value,
+            selectedSort
           )
 
         }
@@ -113,6 +123,35 @@ export function FilterBar() {
         )}
 
       </select>
+
+      <select
+  value={selectedSort}
+  onChange={(event) =>
+
+    updateFilters(
+      selectedRole,
+      selectedLocation,
+      event.target.value
+    )
+
+  }
+  className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
+>
+
+  {sortOptions.map((sort) => (
+
+    <option
+      key={sort}
+      value={sort}
+    >
+
+      {sort}
+
+    </option>
+
+  ))}
+
+</select>
 
     </div>
   );
