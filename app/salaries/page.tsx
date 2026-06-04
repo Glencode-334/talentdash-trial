@@ -24,24 +24,51 @@ export default async function SalariesPage({
 
   const params = await searchParams;
 
-  const filteredSalaries =
-    salaries.filter((salary) => {
+  const filteredSalaries = salaries
+  .filter((salary) => {
+    const roleMatch =
+      !params.role ||
+      salary.role === params.role;
+    const locationMatch =
+      !params.location ||
+      salary.location ===
+        params.location;
 
-      const roleMatch =
-        !params.role ||
-        salary.role === params.role;
+    return (
+      roleMatch &&
+      locationMatch
+    );
 
-      const locationMatch =
-        !params.location ||
-        salary.location ===
-          params.location;
+  })
+  .sort((a, b) => {
+
+    if (
+      params.sort ===
+      "High to Low"
+    ) {
 
       return (
-        roleMatch &&
-        locationMatch
+        b.totalCompensation -
+        a.totalCompensation
       );
-    });
 
+    }
+
+    if (
+      params.sort ===
+      "Low to High"
+    ) {
+
+      return (
+        a.totalCompensation -
+        b.totalCompensation
+      );
+
+    }
+
+    return 0;
+
+  });
   return (
 
     <main className="min-h-screen bg-[#F7F7F7] py-10">
