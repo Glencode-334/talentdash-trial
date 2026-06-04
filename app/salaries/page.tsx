@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { CompanyGrid } from "@/components/features/CompanyGrid";
 import { salaries } from "@/data/salaries";
 
 import { formatCurrency } from "@/lib/formatCurrency";
@@ -143,7 +145,16 @@ export default async function SalariesPage({
                     >
 
                       <td className="px-6 py-5 font-medium">
-                        {salary.company}
+
+                        <Link
+                          href={`/companies/${salary.companySlug}`}
+                          className="transition hover:text-[#2563EB]"
+                        >
+
+                          {salary.company}
+
+                        </Link>
+
                       </td>
 
                       <td className="px-6 py-5">
@@ -180,6 +191,18 @@ export default async function SalariesPage({
           </div>
 
         </Card>
+
+        <div className="mt-14">
+
+          <h2 className="mb-6 text-3xl font-bold">
+
+            Top Companies
+
+          </h2>
+
+          <CompanyGrid />
+
+        </div>
 
       </Container>
 

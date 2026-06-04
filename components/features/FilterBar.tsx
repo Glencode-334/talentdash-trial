@@ -125,33 +125,33 @@ export function FilterBar() {
       </select>
 
       <select
-  value={selectedSort}
-  onChange={(event) =>
+        value={selectedSort}
+        onChange={(event) =>
 
-    updateFilters(
-      selectedRole,
-      selectedLocation,
-      event.target.value
-    )
+          updateFilters(
+            selectedRole,
+            selectedLocation,
+            event.target.value
+          )
 
-  }
-  className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
->
+        }
+        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
+      >
 
-  {sortOptions.map((sort) => (
+        {sortOptions.map((sort) => (
 
-    <option
-      key={sort}
-      value={sort}
-    >
+          <option
+            key={sort}
+            value={sort}
+          >
 
-      {sort}
+            {sort}
 
-    </option>
+          </option>
 
-  ))}
+        ))}
 
-</select>
+      </select>
 
     </div>
   );
