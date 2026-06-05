@@ -1,279 +1,583 @@
 import Link from "next/link";
 
-import { salaries } from "@/data/salaries";
-
 import { companies } from "@/data/companies";
-
-import { Container } from "@/components/ui/Container";
-
-import { Card } from "@/components/ui/Card";
-
-import { CompanyGrid } from "@/components/features/CompanyGrid";
-
-import { formatCurrency } from "@/lib/formatCurrency";
 
 export default function HomePage() {
 
-  const avgCompensation =
-    Math.round(
+  const topCompanies = [
+    "Google",
+    "Amazon",
+    "Apple",
+    "Microsoft",
+    "Meta",
+    "Netflix",
+    "Tesla",
+    "Adobe",
+    "Salesforce",
+    "Infosys",
+    "TCS",
+    "IBM",
+  ];
 
-      salaries.reduce(
-        (acc, salary) =>
-          acc +
-          salary.totalCompensation,
-        0
-      ) /
-
-      salaries.length
-    );
+  const pastelClasses = [
+    "from-[#EEF5FF] to-[#F8FBFF]",
+    "from-[#FFF6DF] to-[#FFF9EF]",
+    "from-[#F8F8F8] to-[#FCFCFC]",
+    "from-[#EEF5FF] to-[#F8FBFF]",
+    "from-[#EEF3FF] to-[#F7F9FF]",
+    "from-[#FFF1F3] to-[#FFF7F8]",
+  ];
 
   return (
 
-    <main className="min-h-screen">
+    <main className="bg-[#FCFCFD] pb-20">
 
-      <Container>
+      {/* HERO */}
 
-        {/* HERO */}
+      <section className="relative overflow-hidden border-b border-[#F3F4F6] bg-gradient-to-br from-[#FFF8FB] via-[#FFFFFF] to-[#F8FAFF]">
 
-        <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6 py-12">
 
-          <div className="max-w-4xl">
+          <div className="text-center">
 
-            <div className="inline-flex items-center rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#6B7280]">
+            <div className="inline-flex rounded-xl bg-[#FFF1F6] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-[#FF4D8D]">
 
-              Salary Intelligence Platform
+              COMPANIES
 
             </div>
 
-            <h1 className="mt-8 text-4xl md:text-6xl font-bold leading-tight tracking-tight text-[#111827]">
+            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-[#111827] md:text-6xl">
 
-              Explore compensation insights from top technology companies.
+              Search for
+
+              <span className="text-[#FF4D8D]">
+
+                {" "}Company
+
+              </span>
 
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 md:text-xl md:leading-9 text-[#6B7280]">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#6B7280]">
 
-              TalentDash helps engineers explore salary intelligence,
-              compare compensation trends,
-              and analyze workplace insights across modern technology companies.
+              Search companies to explore salaries,
+              benefits,
+              workplace culture,
+              and career growth opportunities.
 
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            {/* SEARCH */}
+
+            <div className="mx-auto mt-8 max-w-3xl">
+
+              <div className="flex items-center rounded-2xl border border-[#ECECEC] bg-white px-5 py-4 shadow-sm">
+
+                <input
+                  type="text"
+                  placeholder="Search for a company..."
+                  className="w-full bg-transparent text-sm outline-none"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* POPULAR COMPANIES */}
+
+          <div className="mt-12">
+
+            <div className="flex items-center justify-between">
+
+              <h2 className="text-xl font-bold">
+
+                Popular Companies
+
+              </h2>
 
               <Link
                 href="/salaries"
-                className="rounded-2xl bg-black px-8 py-4 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-md"
+                className="text-sm font-medium text-[#FF4D8D]"
               >
 
-                Explore Salaries
+                View all companies →
 
               </Link>
 
-              <Link
-                href="/compare"
-                className="rounded-2xl border border-[#E5E7EB] bg-white px-8 py-4 text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-md"
-              >
+            </div>
 
-                Compare Companies
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
 
-              </Link>
+              {topCompanies.map((company, index) => {
+
+                const matchedCompany =
+                  companies.find(
+                    (item) =>
+                      item.name === company
+                  );
+
+                return (
+
+                  <Link
+                    key={company}
+                    href={
+                      matchedCompany
+
+                        ? `/companies/${matchedCompany.slug}`
+
+                        : "/salaries"
+                    }
+                  >
+
+                    <div
+                      className={`rounded-2xl border border-[#F1F1F1] bg-gradient-to-br ${
+                        pastelClasses[index % pastelClasses.length]
+                      } px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm`}
+                    >
+
+                      <div className="flex items-center justify-between">
+
+                        <div>
+
+                          <h3 className="text-lg font-semibold">
+
+                            {company}
+
+                          </h3>
+
+                          <p className="mt-2 text-sm text-[#6B7280]">
+
+                            Technology Company
+
+                          </p>
+
+                        </div>
+
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-sm">
+
+                          →
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </Link>
+                );
+              })}
 
             </div>
 
           </div>
 
-        </section>
+        </div>
 
-        {/* STATS */}
+      </section>
 
-        <section className="grid gap-6 md:grid-cols-3">
+            {/* FUNDING STAGES */}
 
-          <Card>
+      <section className="mx-auto mt-8 max-w-7xl px-6">
 
-            <div className="p-8">
+        <h2 className="text-xl font-bold">
 
-              <p className="text-sm text-[#6B7280]">
-                Companies
+          Startups by Funding Stage
+
+        </h2>
+
+        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-8">
+
+          {[
+            "Pre-Seed",
+            "Seed",
+            "Series A",
+            "Series B",
+            "Series C",
+            "Series D",
+            "Series E+",
+            "Post IPO",
+          ].map((stage) => (
+
+            <div
+              key={stage}
+              className="rounded-2xl border border-[#F1F1F1] bg-white px-4 py-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+            >
+
+              <p className="text-sm font-medium">
+
+                {stage}
+
               </p>
 
-              <h2 className="mt-3 text-4xl font-bold">
-                {companies.length}
-              </h2>
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* TOP AI COMPANIES */}
+
+      <section className="mx-auto mt-8 max-w-7xl px-6">
+
+        <div className="flex items-center justify-between">
+
+          <h2 className="text-xl font-bold">
+
+            Top AI Companies
+
+          </h2>
+
+          <Link
+            href="/salaries"
+            className="text-sm font-medium text-[#FF4D8D]"
+          >
+
+            Explore →
+          </Link>
+
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+          {[
+            "OpenAI",
+            "Anthropic",
+            "NVIDIA",
+            "Perplexity",
+            "Mistral AI",
+            "Cohere",
+            "Midjourney",
+            "Stability AI",
+          ].map((company, index) => {
+
+            return (
+
+              <div
+                key={company}
+                className={`rounded-2xl border border-[#F1F1F1] bg-gradient-to-br ${
+                  pastelClasses[index % pastelClasses.length]
+                } px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm`}
+              >
+
+                <div className="flex items-center justify-between">
+
+                  <div>
+
+                    <h3 className="text-lg font-semibold">
+
+                      {company}
+
+                    </h3>
+
+                    <p className="mt-2 text-sm text-[#6B7280]">
+
+                      AI & Research
+
+                    </p>
+
+                  </div>
+
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-sm">
+
+                    ✨
+
+                  </div>
+
+                </div>
+
+              </div>
+            );
+          })}
+
+        </div>
+
+      </section>
+
+      {/* TOP INDIAN COMPANIES */}
+
+      <section className="mx-auto mt-8 max-w-7xl px-6">
+
+        <h2 className="text-xl font-bold">
+
+          Top Indian Companies
+
+        </h2>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+          {[
+            "TCS",
+            "Infosys",
+            "Wipro",
+            "HCLTech",
+            "Tech Mahindra",
+            "Reliance",
+            "Airtel",
+            "Zomato",
+          ].map((company, index) => (
+
+            <div
+              key={company}
+              className={`rounded-2xl border border-[#F1F1F1] bg-gradient-to-br ${
+                pastelClasses[index % pastelClasses.length]
+              } px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm`}
+            >
+
+              <div className="flex items-center justify-between">
+
+                <div>
+
+                  <h3 className="text-lg font-semibold">
+
+                    {company}
+
+                  </h3>
+
+                  <p className="mt-2 text-sm text-[#6B7280]">
+
+                    Indian Enterprise
+
+                  </p>
+
+                </div>
+
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-sm">
+
+                  →
+
+                </div>
+
+              </div>
 
             </div>
+          ))}
 
-          </Card>
+        </div>
 
-          <Card>
+      </section>
 
-            <div className="p-8">
+          {/* COMPARE SECTION */}
 
-              <p className="text-sm text-[#6B7280]">
-                Salary Records
-              </p>
+<section className="mx-auto mt-12 max-w-7xl px-6">
 
-              <h2 className="mt-3 text-4xl font-bold">
-                {salaries.length}
-              </h2>
+  <div className="rounded-[36px] bg-gradient-to-br from-[#FFF1F6] via-[#FFFFFF] to-[#F8FAFF] px-8 py-14 text-center">
 
-            </div>
+    <div className="mx-auto max-w-3xl">
 
-          </Card>
+      <div className="inline-flex rounded-xl bg-white px-3 py-1.5 text-[10px] font-semibold tracking-wide text-[#FF4D8D] shadow-sm">
 
-          <Card>
+        COMPARE COMPANIES
 
-            <div className="p-8">
+      </div>
 
-              <p className="text-sm text-[#6B7280]">
-                Avg Compensation
-              </p>
+      <h2 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
 
-              <h2 className="mt-3 text-4xl font-bold text-[#16A34A]">
+        Compare companies.
 
-                {formatCurrency(
-                  avgCompensation,
-                  "INR"
-                )}
+        <span className="text-[#FF4D8D]">
 
-              </h2>
+          {" "}Make better career moves.
 
-            </div>
+        </span>
 
-          </Card>
+      </h2>
 
-        </section>
+      <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#6B7280]">
 
-        {/* FEATURES */}
+        Compare compensation,
+        growth,
+        workplace culture,
+        and engineering opportunities.
 
-        <section className="py-24">
+      </p>
 
-          <div className="max-w-3xl">
+      {/* COMPARE UI */}
 
-            <h2 className="text-4xl font-bold tracking-tight">
+      <div className="mt-14 flex flex-col items-center justify-center gap-6 md:flex-row">
 
-              Built for modern compensation research.
+        {/* LEFT */}
 
-            </h2>
+        <button className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[#D1D5DB] bg-white text-5xl text-[#9CA3AF] transition hover:border-[#FF4D8D] hover:text-[#FF4D8D]">
 
-            <p className="mt-6 text-lg leading-8 text-[#6B7280]">
+          +
 
-              TalentDash combines salary intelligence,
-              company insights,
-              and compare workflows into a modern developer-focused experience.
+        </button>
+
+        {/* VS */}
+
+        <div className="rounded-full bg-white px-5 py-3 text-sm font-semibold shadow-sm">
+
+          VS
+
+        </div>
+
+        {/* RIGHT */}
+
+        <button className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[#D1D5DB] bg-white text-5xl text-[#9CA3AF] transition hover:border-[#FF4D8D] hover:text-[#FF4D8D]">
+
+          +
+
+        </button>
+
+      </div>
+
+      <Link
+        href="/compare"
+        className="mt-8 inline-flex text-sm font-medium text-[#FF4D8D]"
+      >
+
+        Open advanced compare →
+      </Link>
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* EXPLORE COMPANIES */}
+
+      <section className="mx-auto mt-12 max-w-7xl px-6">
+
+        <div className="flex items-center justify-between">
+
+          <div>
+
+            <p className="text-sm font-medium text-[#FF4D8D]">
+
+              Discover Companies ✨
 
             </p>
 
-          </div>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight">
 
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+              Explore companies your way
 
-            <Card>
-
-              <div className="p-8">
-
-                <h3 className="text-xl font-semibold">
-
-                  Salary Intelligence
-
-                </h3>
-
-                <p className="mt-4 leading-7 text-[#6B7280]">
-
-                  Explore compensation trends across roles,
-                  levels,
-                  and locations.
-
-                </p>
-
-              </div>
-
-            </Card>
-
-            <Card>
-
-              <div className="p-8">
-
-                <h3 className="text-xl font-semibold">
-
-                  Company Insights
-
-                </h3>
-
-                <p className="mt-4 leading-7 text-[#6B7280]">
-
-                  Analyze company-specific compensation data
-                  and workplace metrics.
-
-                </p>
-
-              </div>
-
-            </Card>
-
-            <Card>
-
-              <div className="p-8">
-
-                <h3 className="text-xl font-semibold">
-
-                  Compare Workflows
-
-                </h3>
-
-                <p className="mt-4 leading-7 text-[#6B7280]">
-
-                  Compare multiple companies side-by-side
-                  using shareable URL-driven workflows.
-
-                </p>
-
-              </div>
-
-            </Card>
+            </h2>
 
           </div>
 
-        </section>
+          <button className="rounded-2xl border border-[#ECECEC] bg-white px-6 py-3 text-sm font-medium transition hover:bg-[#FAFAFB]">
 
-        {/* TOP COMPANIES */}
+            View all companies →
+          </button>
 
-        <section className="pb-24">
+        </div>
 
-          <div className="mb-10 flex items-end justify-between">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-            <div>
+          {[
+            "Top paying companies",
+            "Remote friendly companies",
+            "Fast growing companies",
+            "AI & tech companies",
+          ].map((category) => (
 
-              <h2 className="text-4xl font-bold tracking-tight">
-
-                Top Companies
-
-              </h2>
-
-              <p className="mt-4 text-lg text-[#6B7280]">
-
-                Explore salary intelligence from leading technology companies.
-
-              </p>
-
-            </div>
-
-            <Link
-              href="/salaries"
-              className="hidden rounded-xl border border-[#E5E7EB] bg-white px-6 py-3 text-sm font-medium transition hover:bg-[#F9FAFB] md:inline-flex"
+            <div
+              key={category}
+              className="rounded-2xl border border-[#F1F1F1] bg-gradient-to-br from-white to-[#FCFCFD] p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
             >
 
-              View Salaries
+              <div className="flex h-full flex-col justify-between">
 
-            </Link>
+                <div>
 
-          </div>
+                  <h3 className="text-xl font-semibold leading-tight">
 
-          <CompanyGrid />
+                    {category}
 
-        </section>
+                  </h3>
 
-      </Container>
+                  <p className="mt-4 text-sm text-[#6B7280]">
+
+                    2,400 companies
+
+                  </p>
+
+                </div>
+
+                <div className="mt-8 flex items-center justify-between">
+
+                  <div className="h-1 w-12 rounded-xl bg-[#FF4D8D]" />
+
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#ECECEC] bg-white">
+
+                    →
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* QUICK WAYS */}
+
+      <section className="mx-auto mt-12 max-w-7xl px-6">
+
+        <h2 className="text-2xl font-bold">
+
+          Quick ways to explore
+
+        </h2>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+          {[
+            "By experience",
+            "By location",
+            "By company size",
+            "By industry",
+            "By rating",
+            "By funding stage",
+            "By known for",
+            "By badges",
+          ].map((item) => (
+
+            <div
+              key={item}
+              className="rounded-2xl border border-[#F1F1F1] bg-white px-5 py-4 transition hover:-translate-y-0.5 hover:shadow-sm"
+            >
+
+              <div className="flex items-center justify-between">
+
+                <div>
+
+                  <h3 className="font-semibold">
+
+                    {item}
+
+                  </h3>
+
+                  <p className="mt-2 text-sm text-[#6B7280]">
+
+                    Explore company intelligence
+
+                  </p>
+
+                </div>
+
+                <div className="text-[#FF4D8D]">
+
+                  →
+                </div>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
 
     </main>
   );

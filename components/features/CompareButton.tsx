@@ -96,7 +96,7 @@ export function CompareButton({
       className={`rounded-lg px-4 py-2 text-sm text-white transition ${
         isSelected
           ? "bg-[#16A34A]"
-          : "bg-black hover:-translate-y-0.5 hover:shadow-md"
+          : "bg-[#16A34A] hover:-translate-y-0.5 hover:shadow-md"
       }`}
     >
 

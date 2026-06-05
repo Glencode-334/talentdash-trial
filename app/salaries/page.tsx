@@ -123,189 +123,369 @@ const topLocation =
       (a, b) => b[1] - a[1]
     )[0]?.[0] ?? "N/A";
     
-  return (
+ return (
 
-    <main className="min-h-screen bg-[#F7F7F7] py-10">
+  <main className="bg-[#FCFCFD] pb-20">
 
-      <Container>
+    {/* HERO */}
 
-        <SectionHeader
-          title="Salary Intelligence"
-          description="Explore compensation insights from top tech companies."
-        />
+    <section className="border-b border-[#F3F4F6] bg-gradient-to-br from-[#FFF8FB] via-[#FFFFFF] to-[#F8FAFF]">
 
-        <StatsGrid
-          totalCompanies={
-            uniqueCompanies.size
-          }
-          avgCompensation={formatCurrency(
-            averageCompensation,
-            "INR"
-          )}
-          topLocation={topLocation}
-        />
+      <div className="mx-auto max-w-7xl px-6 py-14">
 
-        <FilterBar />
+        <div className="max-w-3xl">
 
-        {selectedCompanies.length > 0 && (
+          <div className="inline-flex rounded-xl bg-[#FFF1F6] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-[#FF4D8D]">
 
-          <div className="mb-6 flex items-center justify-between rounded-2xl border border-[#EBEBEB] bg-white p-4">
-
-            <p className="text-sm text-[#6A6A6A]">
-
-              {selectedCompanies.length} companies selected for comparison
-
-            </p>
-
-            <Link
-              href={`/compare?companies=${selectedCompanies.join(",")}`}
-              className="rounded-xl bg-black px-5 py-3 text-sm text-white transition hover:-translate-y-0.5 hover:shadow-md"
-            >
-
-              View Compare
-
-            </Link>
+            SALARY INTELLIGENCE
 
           </div>
 
-        )}
+          <h1 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
 
-        <Card>
+            Explore salaries across top companies.
 
-          <div className="w-full overflow-x-auto rounded-2xl">
+          </h1>
 
-            <table className="w-full min-w-[900px] table-fixed">
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#6B7280]">
 
-              <thead className="border-b border-[#EBEBEB] bg-[#FAFAFA]">
+            Discover compensation trends,
+            compare salaries,
+            and explore engineering pay insights from leading companies.
 
-                <tr className="border-b border-[#F1F5F9] transition hover:bg-[#F8FAFC]">
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Company
-                  </th>
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Role
-                  </th>
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Level
-                  </th>
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Location
-                  </th>
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Total Compensation
-                  </th>
-
-                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
-                    Compare
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {filteredSalaries.length === 0 ? (
-
-                  <tr className="border-b border-[#F1F5F9] transition hover:bg-[#F8FAFC]">
-
-                    <td
-                      colSpan={5}
-                      className="px-5 py-16 text-center text-[#6A6A6A]"
-                    >
-
-                      No salary records found for the selected filters.
-
-                    </td>
-
-                  </tr>
-
-                ) : (
-
-                  filteredSalaries.map((salary) => (
-
-                    <tr
-                      key={salary.id}
-                      className="border-b border-[#F1F1F1] transition hover:bg-[#F8FAFC]"
-                    >
-
-                      <td className="px-5 py-4 font-medium">
-
-                        <Link
-                          href={`/companies/${salary.companySlug}`}
-                          className="transition hover:text-[#2563EB] cursor-pointer"
-                        >
-
-                          {salary.company}
-
-                        </Link>
-
-                      </td>
-
-                      <td className="px-5 py-4">
-                        {salary.role}
-                      </td>
-
-                      <td className="px-5 py-4">
-                        {salary.level}
-                      </td>
-
-                      <td className="px-5 py-4">
-                        {salary.location}
-                      </td>
-
-                      <td className="px-5 py-4 font-semibold text-[#16A34A]">
-
-                        {formatCurrency(
-                          salary.totalCompensation,
-                          salary.currency
-                        )}
-
-                      </td>
-
-                      <td className="px-5 py-4">
-
-                          <CompareButton
-                            companySlug={
-                              salary.companySlug
-                            }
-                          />
-
-                      </td>
-
-                    </tr>
-
-                  ))
-
-                )}
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </Card>
-
-        <div className="mt-14">
-
-          <h2 className="mb-6 text-3xl font-bold">
-
-            Top Companies
-
-          </h2>
-
-          <CompanyGrid />
+          </p>
 
         </div>
 
-      </Container>
+        {/* FILTER BAR */}
 
-    </main>
-  );
+        <div className="mt-10 rounded-2xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
+
+          <FilterBar />
+
+        </div>
+
+      </div>
+
+    </section>
+
+    {/* INSIGHT CARDS */}
+
+    <section className="mx-auto mt-10 max-w-7xl px-6">
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+        <div className="rounded-2xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
+
+          <p className="text-sm text-[#6B7280]">
+
+            Highest Paying Role
+
+          </p>
+
+          <h2 className="mt-3 text-2xl font-bold">
+
+            Staff Engineer
+
+          </h2>
+
+          <p className="mt-2 text-sm text-[#16A34A]">
+
+            ₹85L+ average compensation
+
+          </p>
+
+        </div>
+
+        <div className="rounded-2xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
+
+          <p className="text-sm text-[#6B7280]">
+
+            Most Popular Location
+
+          </p>
+
+          <h2 className="mt-3 text-2xl font-bold">
+
+            Bangalore
+
+          </h2>
+
+          <p className="mt-2 text-sm text-[#FF4D8D]">
+
+            2,400+ salary records
+
+          </p>
+
+        </div>
+
+        <div className="rounded-2xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
+
+          <p className="text-sm text-[#6B7280]">
+
+            Top Paying Company
+
+          </p>
+
+          <h2 className="mt-3 text-2xl font-bold">
+
+            Netflix
+
+          </h2>
+
+          <p className="mt-2 text-sm text-[#7C3AED]">
+
+            Premium compensation band
+
+          </p>
+
+        </div>
+
+        <div className="rounded-2xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
+
+          <p className="text-sm text-[#6B7280]">
+
+            Salary Records
+
+          </p>
+
+          <h2 className="mt-3 text-2xl font-bold">
+
+            {filteredSalaries.length}
+
+          </h2>
+
+          <p className="mt-2 text-sm text-[#6B7280]">
+
+            Compensation insights available
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    {/* POPULAR ROLES */}
+
+    <section className="mx-auto mt-10 max-w-7xl px-6">
+
+      <div className="flex items-center justify-between">
+
+        <h2 className="text-2xl font-bold">
+
+          Popular Roles
+
+        </h2>
+
+        <button className="text-sm font-medium text-[#FF4D8D]">
+
+          Explore all →
+        </button>
+
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+        {[
+          "Software Engineer",
+          "Frontend Engineer",
+          "Backend Engineer",
+          "Product Manager",
+          "Data Scientist",
+          "ML Engineer",
+          "DevOps Engineer",
+          "Mobile Engineer",
+        ].map((role, index) => {
+
+          const gradients = [
+            "from-[#EEF5FF] to-[#F8FBFF]",
+            "from-[#FFF6DF] to-[#FFF9EF]",
+            "from-[#FFF1F3] to-[#FFF7F8]",
+            "from-[#EEF3FF] to-[#F7F9FF]",
+          ];
+
+          return (
+
+            <div
+              key={role}
+              className={`rounded-2xl border border-[#F1F1F1] bg-gradient-to-br ${
+                gradients[index % gradients.length]
+              } px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm`}
+            >
+
+              <div className="flex items-center justify-between">
+
+                <div>
+
+                  <h3 className="font-semibold">
+
+                    {role}
+
+                  </h3>
+
+                  <p className="mt-2 text-sm text-[#6B7280]">
+
+                    Salary insights
+
+                  </p>
+
+                </div>
+
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm">
+
+                  →
+
+                </div>
+
+              </div>
+
+            </div>
+          );
+        })}
+
+      </div>
+
+    </section>
+
+    {/* SALARY TABLE */}
+
+    <section className="mx-auto mt-10 max-w-7xl px-6">
+
+      <div className="rounded-2xl border border-[#F1F1F1] bg-white shadow-sm">
+
+        <div className="flex items-center justify-between border-b border-[#F3F4F6] px-6 py-5">
+
+          <div>
+
+            <h2 className="text-xl font-bold">
+
+              Salary Intelligence Table
+
+            </h2>
+
+            <p className="mt-1 text-sm text-[#6B7280]">
+
+              Explore compensation records from top companies.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <div className="overflow-x-auto">
+
+          <table className="min-w-full">
+
+            <thead className="border-b border-[#F3F4F6] bg-[#FAFAFB]">
+
+              <tr className="text-left text-sm text-[#6B7280]">
+
+                <th className="px-6 py-4 font-medium">
+
+                  Company
+
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+
+                  Role
+
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+
+                  Location
+
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+
+                  Experience
+
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+
+                  Compensation
+
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+
+                  Compare
+
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              {filteredSalaries.map((salary) => (
+
+                <tr
+                  key={salary.id}
+                  className="border-b border-[#F8F8F8] transition hover:bg-[#FAFAFB]"
+                >
+
+                  <td className="px-6 py-5 font-medium">
+
+                    {salary.company}
+
+                  </td>
+
+                  <td className="px-6 py-5 text-[#6B7280]">
+
+                    {salary.role}
+
+                  </td>
+
+                  <td className="px-6 py-5 text-[#6B7280]">
+
+                    {salary.location}
+
+                  </td>
+
+                  <td className="px-6 py-5 text-[#6B7280]">
+
+                    {salary.experience} yrs
+
+                  </td>
+
+                  <td className="px-6 py-5 font-semibold text-[#111827]">
+
+                    {formatCurrency(
+                      salary.totalCompensation,
+                      salary.currency
+                    )}
+
+                  </td>
+
+                  <td className="px-6 py-5">
+
+                    <CompareButton
+                      companySlug={salary.company}
+                    />
+
+                  </td>
+
+                </tr>
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+);
 }
