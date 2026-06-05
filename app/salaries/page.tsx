@@ -159,7 +159,7 @@ const topLocation =
 
             <Link
               href={`/compare?companies=${selectedCompanies.join(",")}`}
-              className="rounded-xl bg-black px-5 py-3 text-sm text-white transition hover:opacity-90"
+              className="rounded-xl bg-black px-5 py-3 text-sm text-white transition hover:-translate-y-0.5 hover:shadow-md"
             >
 
               View Compare
@@ -178,7 +178,7 @@ const topLocation =
 
               <thead className="border-b border-[#EBEBEB] bg-[#FAFAFA]">
 
-                <tr>
+                <tr className="border-b border-[#F1F5F9] transition hover:bg-[#F8FAFC]">
 
                   <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Company
@@ -212,7 +212,7 @@ const topLocation =
 
                 {filteredSalaries.length === 0 ? (
 
-                  <tr>
+                  <tr className="border-b border-[#F1F5F9] transition hover:bg-[#F8FAFC]">
 
                     <td
                       colSpan={5}
@@ -231,14 +231,14 @@ const topLocation =
 
                     <tr
                       key={salary.id}
-                      className="border-b border-[#F1F1F1]"
+                      className="border-b border-[#F1F1F1] transition hover:bg-[#F8FAFC]"
                     >
 
                       <td className="px-5 py-4 font-medium">
 
                         <Link
                           href={`/companies/${salary.companySlug}`}
-                          className="transition hover:text-[#2563EB]"
+                          className="transition hover:text-[#2563EB] cursor-pointer"
                         >
 
                           {salary.company}

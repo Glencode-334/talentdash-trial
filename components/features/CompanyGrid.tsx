@@ -12,7 +12,7 @@ export function CompanyGrid() {
 
       {companies.map((company) => (
 
-        <Link
+        <Link className="group block"
           key={company.slug}
           href={`/companies/${company.slug}`}
         >
@@ -21,7 +21,7 @@ export function CompanyGrid() {
 
             <div className="p-6">
 
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-xl font-semibold transition group-hover:text-[#2563EB]">
 
                 {company.name}
 

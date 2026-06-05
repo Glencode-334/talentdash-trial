@@ -23,10 +23,10 @@ export function Navbar() {
 
           <nav className="flex items-center gap-6 text-sm font-medium">
 
-            <Link href="/salaries">
+            <Link href="/salaries" className="transition hover:text-[#2563EB]">
               Salaries
             </Link>
-            <Link href="/compare">
+            <Link href="/compare" className="transition hover:text-[#2563EB]">
                 Compare
             </Link>
             

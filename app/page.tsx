@@ -45,7 +45,7 @@ export default function HomePage() {
 
             </div>
 
-            <h1 className="mt-8 text-6xl font-bold leading-tight tracking-tight text-[#111827]">
+            <h1 className="mt-8 text-4xl md:text-6xl font-bold leading-tight tracking-tight text-[#111827]">
 
               Explore compensation insights from top technology companies.
 
@@ -63,7 +63,7 @@ export default function HomePage() {
 
               <Link
                 href="/salaries"
-                className="rounded-2xl bg-black px-8 py-4 text-sm font-medium text-white transition hover:opacity-90"
+                className="rounded-2xl bg-black px-8 py-4 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-md"
               >
 
                 Explore Salaries
@@ -72,7 +72,7 @@ export default function HomePage() {
 
               <Link
                 href="/compare"
-                className="rounded-2xl border border-[#E5E7EB] bg-white px-8 py-4 text-sm font-medium transition hover:bg-[#F9FAFB]"
+                className="rounded-2xl border border-[#E5E7EB] bg-white px-8 py-4 text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-md"
               >
 
                 Compare Companies

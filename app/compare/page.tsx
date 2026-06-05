@@ -65,7 +65,7 @@ export default async function ComparePage({
 
               <Link
                 href="/salaries"
-                className="mt-6 inline-block rounded-xl bg-black px-6 py-3 text-sm text-white transition hover:opacity-90"
+                className="mt-6 inline-block rounded-xl bg-black px-6 py-3 text-sm text-white transition hover:-translate-y-0.5 hover:shadow-md"
               >
 
                 Add Companies
