@@ -9,7 +9,7 @@ export function Card({
   return (
 
     <div className=
-      "rounded-2xl border border-[#E5E7EB] bg-white transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+      "cursor-pointer rounded-2xl border border-[#E5E7EB] bg-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
     >
       {children}
 

@@ -1,12 +1,35 @@
+"use client";
+
 import Link from "next/link";
+
+import { usePathname } from "next/navigation";
 
 import { Container } from "@/components/ui/Container";
 
 export function Navbar() {
 
+  const pathname = usePathname();
+
+  const links = [
+    {
+      href: "/",
+      label: "Home",
+    },
+
+    {
+      href: "/salaries",
+      label: "Salaries",
+    },
+
+    {
+      href: "/compare",
+      label: "Compare",
+    },
+  ];
+
   return (
 
-    <header className="border-b border-[#EBEBEB] bg-white">
+    <header className="sticky top-0 z-50 border-b border-[#E5E7EB] bg-white/90 backdrop-blur">
 
       <Container>
 
@@ -14,7 +37,7 @@ export function Navbar() {
 
           <Link
             href="/"
-            className="text-2xl font-bold"
+            className="text-2xl font-bold tracking-tight"
           >
 
             TalentDash
@@ -23,13 +46,32 @@ export function Navbar() {
 
           <nav className="flex items-center gap-6 text-sm font-medium">
 
-            <Link href="/salaries" className="transition hover:text-[#2563EB]">
-              Salaries
-            </Link>
-            <Link href="/compare" className="transition hover:text-[#2563EB]">
-                Compare
-            </Link>
-            
+            {links.map((link) => {
+
+              const isActive =
+                pathname === link.href;
+
+              return (
+
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition ${
+                    isActive
+
+                      ? "text-black"
+
+                      : "text-[#6B7280] hover:text-black"
+                  }`}
+                >
+
+                  {link.label}
+
+                </Link>
+
+              );
+            })}
+
           </nav>
 
         </div>
