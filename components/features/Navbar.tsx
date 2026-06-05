@@ -24,11 +24,12 @@ export function Navbar() {
           <nav className="flex items-center gap-6 text-sm font-medium">
 
             <Link href="/salaries">
-
               Salaries
-
             </Link>
-
+            <Link href="/compare">
+                Compare
+            </Link>
+            
           </nav>
 
         </div>

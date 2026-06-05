@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/features/Navbar";
+import { Footer } from "@/components/features/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,11 +16,33 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
 
-  title: "TalentDash",
+  title: {
+    default: "TalentDash",
+    template: "%s | TalentDash",
+  },
 
   description:
-    "Explore salary intelligence, company compensation insights, and workplace analytics.",
+    "Explore salary intelligence, compensation insights, and workplace analytics from top technology companies.",
 
+  openGraph: {
+
+    title: "TalentDash",
+
+    description:
+      "Explore salary intelligence and workplace insights.",
+
+    type: "website",
+  },
+
+  twitter: {
+
+    card: "summary_large_image",
+
+    title: "TalentDash",
+
+    description:
+      "Explore salary intelligence and workplace insights.",
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +59,7 @@ export default function RootLayout({
         <>
           <Navbar />
           {children}
+          <Footer />
         </>
       </body>
     </html>

@@ -106,11 +106,37 @@ export default async function CompanyPage({
       companySalaries.length
     );
 
+    const structuredData = {
+
+      "@context": "https://schema.org",
+
+      "@type": "Organization",
+
+      name: company.name,
+
+      description: company.description,
+
+      industry: company.industry,
+
+      numberOfEmployees:
+        company.employees,
+
+    };
+
   return (
 
     <main className="min-h-screen bg-[#F7F7F7] py-10">
 
       <Container>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              structuredData
+            ),
+          }}
+        />
 
         <SectionHeader
           title={company.name}

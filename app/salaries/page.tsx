@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CompanyGrid } from "@/components/features/CompanyGrid";
 import { salaries } from "@/data/salaries";
-
+import { StatsGrid } from "@/components/features/StatsGrid";
+import { CompareButton } from "@/components/features/CompareButton";
 import { formatCurrency } from "@/lib/formatCurrency";
 
 import { Container } from "@/components/ui/Container";
@@ -9,7 +10,6 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 import { Card } from "@/components/ui/Card";
-
 import { FilterBar } from "@/components/features/FilterBar";
 
 type SalariesPageProps = {
@@ -17,6 +17,7 @@ type SalariesPageProps = {
     role?: string;
     location?: string;
     sort?: string;
+    companies?: string;
   }>;
 };
 
@@ -25,6 +26,11 @@ export default async function SalariesPage({
 }: SalariesPageProps) {
 
   const params = await searchParams;
+
+  const selectedCompanies =
+  params.companies
+    ?.split(",")
+    .filter(Boolean) ?? [];
 
   const filteredSalaries = salaries
   .filter((salary) => {
@@ -35,7 +41,6 @@ export default async function SalariesPage({
       !params.location ||
       salary.location ===
         params.location;
-
     return (
       roleMatch &&
       locationMatch
@@ -71,6 +76,53 @@ export default async function SalariesPage({
     return 0;
 
   });
+
+  const uniqueCompanies =
+  new Set(
+    filteredSalaries.map(
+      (salary) => salary.company
+    )
+  );
+
+const averageCompensation =
+  filteredSalaries.length > 0
+
+    ? Math.round(
+
+        filteredSalaries.reduce(
+          (acc, salary) =>
+
+            acc +
+            salary.totalCompensation,
+
+          0
+        ) /
+
+        filteredSalaries.length
+      )
+
+    : 0;
+
+const locationCounts =
+  filteredSalaries.reduce(
+
+    (acc, salary) => {
+
+      acc[salary.location] =
+        (acc[salary.location] || 0) + 1;
+
+      return acc;
+    },
+
+    {} as Record<string, number>
+  );
+
+const topLocation =
+  Object.entries(locationCounts)
+    .sort(
+      (a, b) => b[1] - a[1]
+    )[0]?.[0] ?? "N/A";
+    
   return (
 
     <main className="min-h-screen bg-[#F7F7F7] py-10">
@@ -82,7 +134,41 @@ export default async function SalariesPage({
           description="Explore compensation insights from top tech companies."
         />
 
+        <StatsGrid
+          totalCompanies={
+            uniqueCompanies.size
+          }
+          avgCompensation={formatCurrency(
+            averageCompensation,
+            "INR"
+          )}
+          topLocation={topLocation}
+        />
+
         <FilterBar />
+
+        {selectedCompanies.length > 0 && (
+
+          <div className="mb-6 flex items-center justify-between rounded-2xl border border-[#EBEBEB] bg-white p-4">
+
+            <p className="text-sm text-[#6A6A6A]">
+
+              {selectedCompanies.length} companies selected for comparison
+
+            </p>
+
+            <Link
+              href={`/compare?companies=${selectedCompanies.join(",")}`}
+              className="rounded-xl bg-black px-5 py-3 text-sm text-white transition hover:opacity-90"
+            >
+
+              View Compare
+
+            </Link>
+
+          </div>
+
+        )}
 
         <Card>
 
@@ -112,6 +198,10 @@ export default async function SalariesPage({
 
                   <th className="px-6 py-4 text-left text-sm font-semibold">
                     Total Compensation
+                  </th>
+
+                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                    Compare
                   </th>
 
                 </tr>
@@ -175,6 +265,16 @@ export default async function SalariesPage({
                           salary.totalCompensation,
                           salary.currency
                         )}
+
+                      </td>
+
+                      <td className="px-6 py-5">
+
+                          <CompareButton
+                            companySlug={
+                              salary.companySlug
+                            }
+                          />
 
                       </td>
 
