@@ -4,12 +4,12 @@ export function Footer() {
 
   return (
 
-    <footer className="mt-20 border-t border-[#EBEBEB] bg-white">
+    <footer className="mt-20 border-t border-[#E5E7EB] bg-white">
 
       <Container>
 
-        <div className="flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between">
-
+        <div className="flex flex-col gap-6 py-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          
           <div>
 
             <h3 className="text-xl font-bold">

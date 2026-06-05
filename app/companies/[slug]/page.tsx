@@ -53,7 +53,7 @@ export async function generateMetadata({
 
   return {
 
-    title: `${company.name} Salaries | TalentDash`,
+    title: `${company.name} Salaries`,
 
     description:
       `${company.name} salary insights, compensation trends, company information, and workplace intelligence.`,
@@ -61,7 +61,7 @@ export async function generateMetadata({
     openGraph: {
 
       title:
-        `${company.name} Salaries | TalentDash`,
+        `${company.name} Salaries`,
 
       description:
         `${company.name} salary insights and compensation trends.`,

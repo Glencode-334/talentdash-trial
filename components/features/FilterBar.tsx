@@ -64,7 +64,7 @@ export function FilterBar() {
 
     <div className="mb-8 flex flex-wrap gap-4">
 
-      <select
+      <select aria-label="Filter by role"
         value={selectedRole}
         onChange={(event: ChangeEvent<HTMLSelectElement>) =>
 
@@ -75,7 +75,7 @@ export function FilterBar() {
           )
 
         }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
+        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
       >
 
         {roleOptions.map((role) => (
@@ -93,7 +93,7 @@ export function FilterBar() {
 
       </select>
 
-      <select
+      <select aria-label="Filter by location"
         value={selectedLocation}
         onChange={(event: ChangeEvent<HTMLSelectElement>) =>
 
@@ -104,7 +104,7 @@ export function FilterBar() {
           )
 
         }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
+        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
       >
 
         {locationOptions.map(
@@ -124,7 +124,7 @@ export function FilterBar() {
 
       </select>
 
-      <select
+      <select aria-label="Sort salaries"
         value={selectedSort}
         onChange={(event) =>
 
@@ -135,7 +135,7 @@ export function FilterBar() {
           )
 
         }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm outline-none"
+        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
       >
 
         {sortOptions.map((sort) => (

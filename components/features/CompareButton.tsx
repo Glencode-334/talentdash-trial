@@ -81,8 +81,11 @@ export function CompareButton({
       );
     }
 
-    router.push(
-      `/salaries?${params.toString()}`
+    router.replace(
+      `/salaries?${params.toString()}`,
+      {
+        scroll: false,
+      }
     );
   }
 

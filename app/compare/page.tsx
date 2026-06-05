@@ -1,5 +1,5 @@
 import { companies } from "@/data/companies";
-
+import Link from "next/link";
 import { salaries } from "@/data/salaries";
 
 import { Container } from "@/components/ui/Container";
@@ -63,6 +63,15 @@ export default async function ComparePage({
 
               </p>
 
+              <Link
+                href="/salaries"
+                className="mt-6 inline-block rounded-xl bg-black px-6 py-3 text-sm text-white transition hover:opacity-90"
+              >
+
+                Add Companies
+
+              </Link>
+
             </div>
 
           </Card>
@@ -96,9 +105,12 @@ export default async function ComparePage({
 
                 return (
 
-                  <Card
+                  <Link
                     key={company.slug}
+                    href={`/companies/${company.slug}`}
                   >
+
+                    <Card>
 
                     <div className="p-6">
 
@@ -172,6 +184,8 @@ export default async function ComparePage({
                     </div>
 
                   </Card>
+
+                </Link>
 
                 );
               }

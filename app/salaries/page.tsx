@@ -172,35 +172,35 @@ const topLocation =
 
         <Card>
 
-          <div className="overflow-x-auto">
+          <div className="w-full overflow-x-auto rounded-2xl">
 
-            <table className="min-w-full">
+            <table className="w-full min-w-[900px] table-fixed">
 
               <thead className="border-b border-[#EBEBEB] bg-[#FAFAFA]">
 
                 <tr>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Company
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Role
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Level
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Location
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Total Compensation
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                  <th className="px-5 py-4 text-left align-middle text-xs font-semibold uppercase tracking-wide text-[#6B7280]">
                     Compare
                   </th>
 
@@ -216,7 +216,7 @@ const topLocation =
 
                     <td
                       colSpan={5}
-                      className="px-6 py-16 text-center text-[#6A6A6A]"
+                      className="px-5 py-16 text-center text-[#6A6A6A]"
                     >
 
                       No salary records found for the selected filters.
@@ -234,7 +234,7 @@ const topLocation =
                       className="border-b border-[#F1F1F1]"
                     >
 
-                      <td className="px-6 py-5 font-medium">
+                      <td className="px-5 py-4 font-medium">
 
                         <Link
                           href={`/companies/${salary.companySlug}`}
@@ -247,19 +247,19 @@ const topLocation =
 
                       </td>
 
-                      <td className="px-6 py-5">
+                      <td className="px-5 py-4">
                         {salary.role}
                       </td>
 
-                      <td className="px-6 py-5">
+                      <td className="px-5 py-4">
                         {salary.level}
                       </td>
 
-                      <td className="px-6 py-5">
+                      <td className="px-5 py-4">
                         {salary.location}
                       </td>
 
-                      <td className="px-6 py-5 font-semibold text-[#16A34A]">
+                      <td className="px-5 py-4 font-semibold text-[#16A34A]">
 
                         {formatCurrency(
                           salary.totalCompensation,
@@ -268,7 +268,7 @@ const topLocation =
 
                       </td>
 
-                      <td className="px-6 py-5">
+                      <td className="px-5 py-4">
 
                           <CompareButton
                             companySlug={
