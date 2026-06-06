@@ -1,194 +1,242 @@
-import { SalaryRecord } from "@/types/salary";
-
-export const salaries: SalaryRecord[] = [
+import type { Salary } from "@/types/salary";
+export const salaries: Salary[] = [
   {
-    id: "1",
-    company: "Google",
-    companySlug: "google",
     role: "Software Engineer",
-    level: "L4",
+
+    company: "Google",
+
     location: "Bangalore",
-    experience: "3 Years",
-    baseSalary: 3200000,
-    bonus: 400000,
-    stock: 800000,
-    totalCompensation: 4400000,
-    currency: "INR",
-    workType: "Hybrid",
+
+    experience: "2-4 yrs",
+
+    compensation: "₹32L",
+
+    base: "₹22L",
+
+    bonus: "₹4L",
+
+    stock: "₹6L",
+
+    workPolicy: "Hybrid",
   },
 
   {
-    id: "2",
-    company: "Amazon",
-    companySlug: "amazon",
-    role: "Frontend Engineer",
-    level: "SDE 2",
-    location: "Hyderabad",
-    experience: "4 Years",
-    baseSalary: 2800000,
-    bonus: 300000,
-    stock: 700000,
-    totalCompensation: 3800000,
-    currency: "INR",
-    workType: "Onsite",
-  },
+    role: "Senior Software Engineer",
 
-  {
-    id: "3",
-    company: "Microsoft",
-    companySlug: "microsoft",
-    role: "Product Engineer",
-    level: "63",
+    company: "Meta",
+
     location: "Remote",
-    experience: "5 Years",
-    baseSalary: 3500000,
-    bonus: 500000,
-    stock: 1000000,
-    totalCompensation: 5000000,
-    currency: "INR",
-    workType: "Remote",
+
+    experience: "5-7 yrs",
+
+    compensation: "₹48L",
+
+    base: "₹32L",
+
+    bonus: "₹6L",
+
+    stock: "₹10L",
+
+    workPolicy: "Remote Friendly",
   },
+
   {
-  id: "4",
-  company: "Meta",
-  companySlug: "meta",
-  role: "Software Engineer",
-  level: "E4",
-  location: "Bangalore",
-  experience: "4 Years",
-  baseSalary: 3600000,
-  bonus: 600000,
-  stock: 1500000,
-  totalCompensation: 5700000,
-  currency: "INR",
-  workType: "Hybrid",
-},
+    role: "Frontend Engineer",
 
-{
-  id: "5",
-  company: "Netflix",
-  companySlug: "netflix",
-  role: "Frontend Engineer",
-  level: "Senior",
-  location: "Remote",
-  experience: "6 Years",
-  baseSalary: 5200000,
-  bonus: 900000,
-  stock: 0,
-  totalCompensation: 6100000,
-  currency: "INR",
-  workType: "Remote",
-},
+    company: "Amazon",
 
-{
-  id: "6",
-  company: "Uber",
-  companySlug: "uber",
-  role: "Backend Engineer",
-  level: "L5",
-  location: "Hyderabad",
-  experience: "5 Years",
-  baseSalary: 4100000,
-  bonus: 500000,
-  stock: 1300000,
-  totalCompensation: 5900000,
-  currency: "INR",
-  workType: "Hybrid",
-},
+    location: "Hyderabad",
 
-{
-  id: "7",
-  company: "Atlassian",
-  companySlug: "atlassian",
-  role: "Product Engineer",
-  level: "P4",
-  location: "Remote",
-  experience: "4 Years",
-  baseSalary: 3400000,
-  bonus: 450000,
-  stock: 1200000,
-  totalCompensation: 5050000,
-  currency: "INR",
-  workType: "Remote",
-},
+    experience: "3-5 yrs",
 
-{
-  id: "8",
-  company: "Adobe",
-  companySlug: "adobe",
-  role: "Software Engineer",
-  level: "MTS 2",
-  location: "Noida",
-  experience: "3 Years",
-  baseSalary: 2400000,
-  bonus: 250000,
-  stock: 500000,
-  totalCompensation: 3150000,
-  currency: "INR",
-  workType: "Hybrid",
-},
+    compensation: "₹28L",
 
-{
-  id: "9",
-  company: "Flipkart",
-  companySlug: "flipkart",
-  role: "Data Engineer",
-  level: "SDE 2",
-  location: "Bangalore",
-  experience: "4 Years",
-  baseSalary: 2900000,
-  bonus: 300000,
-  stock: 800000,
-  totalCompensation: 4000000,
-  currency: "INR",
-  workType: "Onsite",
-},
+    base: "₹20L",
 
-{
-  id: "10",
-  company: "Swiggy",
-  companySlug: "swiggy",
-  role: "Frontend Engineer",
-  level: "SDE 2",
-  location: "Bangalore",
-  experience: "3 Years",
-  baseSalary: 2600000,
-  bonus: 200000,
-  stock: 600000,
-  totalCompensation: 3400000,
-  currency: "INR",
-  workType: "Hybrid",
-},
+    bonus: "₹3L",
 
-{
-  id: "11",
-  company: "Zomato",
-  companySlug: "zomato",
-  role: "Software Engineer",
-  level: "SDE 1",
-  location: "Gurgaon",
-  experience: "2 Years",
-  baseSalary: 1800000,
-  bonus: 150000,
-  stock: 300000,
-  totalCompensation: 2250000,
-  currency: "INR",
-  workType: "Onsite",
-},
+    stock: "₹5L",
 
-{
-  id: "12",
-  company: "Razorpay",
-  companySlug: "razorpay",
-  role: "Backend Engineer",
-  level: "SDE 2",
-  location: "Bangalore",
-  experience: "4 Years",
-  baseSalary: 3100000,
-  bonus: 350000,
-  stock: 950000,
-  totalCompensation: 4400000,
-  currency: "INR",
-  workType: "Hybrid",
-},
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "Backend Engineer",
+
+    company: "Microsoft",
+
+    location: "Bangalore",
+
+    experience: "4-6 yrs",
+
+    compensation: "₹36L",
+
+    base: "₹25L",
+
+    bonus: "₹4L",
+
+    stock: "₹7L",
+
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "Staff Engineer",
+
+    company: "Netflix",
+
+    location: "Remote",
+
+    experience: "8+ yrs",
+
+    compensation: "₹82L",
+
+    base: "₹52L",
+
+    bonus: "₹8L",
+
+    stock: "₹22L",
+
+    workPolicy: "Remote Friendly",
+  },
+
+  {
+    role: "Full Stack Engineer",
+
+    company: "Flipkart",
+
+    location: "Bangalore",
+
+    experience: "3-5 yrs",
+
+    compensation: "₹26L",
+
+    base: "₹18L",
+
+    bonus: "₹3L",
+
+    stock: "₹5L",
+
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "Mobile Engineer",
+
+    company: "Swiggy",
+
+    location: "Bangalore",
+
+    experience: "2-4 yrs",
+
+    compensation: "₹22L",
+
+    base: "₹16L",
+
+    bonus: "₹2L",
+
+    stock: "₹4L",
+
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "Data Engineer",
+
+    company: "Zomato",
+
+    location: "Remote",
+
+    experience: "3-5 yrs",
+
+    compensation: "₹24L",
+
+    base: "₹17L",
+
+    bonus: "₹3L",
+
+    stock: "₹4L",
+
+    workPolicy: "Remote Friendly",
+  },
+
+  {
+    role: "Machine Learning Engineer",
+
+    company: "Uber",
+
+    location: "Bangalore",
+
+    experience: "4-6 yrs",
+
+    compensation: "₹42L",
+
+    base: "₹30L",
+
+    bonus: "₹5L",
+
+    stock: "₹7L",
+
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "Engineering Manager",
+
+    company: "Adobe",
+
+    location: "Noida",
+
+    experience: "8+ yrs",
+
+    compensation: "₹58L",
+
+    base: "₹40L",
+
+    bonus: "₹6L",
+
+    stock: "₹12L",
+
+    workPolicy: "Hybrid",
+  },
+
+  {
+    role: "DevOps Engineer",
+
+    company: "Salesforce",
+
+    location: "Hyderabad",
+
+    experience: "5-7 yrs",
+
+    compensation: "₹34L",
+
+    base: "₹24L",
+
+    bonus: "₹4L",
+
+    stock: "₹6L",
+
+    workPolicy: "Remote Friendly",
+  },
+
+  {
+    role: "Platform Engineer",
+
+    company: "LinkedIn",
+
+    location: "Bangalore",
+
+    experience: "5-7 yrs",
+
+    compensation: "₹46L",
+
+    base: "₹32L",
+
+    bonus: "₹5L",
+
+    stock: "₹9L",
+
+    workPolicy: "Hybrid",
+  },
 ];

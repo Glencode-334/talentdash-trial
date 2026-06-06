@@ -1,158 +1,141 @@
-"use client";
-import type { ChangeEvent } from "react";
-import {
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+interface FilterBarProps {
+  compact?: boolean;
+}
 
-import {
-  roleOptions,
-  locationOptions,
-  sortOptions,
-} from "@/config/filters";
+const filters = [
+  {
+    label: "Role",
+    options: [
+      "All Roles",
+      "Frontend Engineer",
+      "Backend Engineer",
+      "Full Stack Engineer",
+      "Staff Engineer",
+    ],
+  },
 
-export function FilterBar() {
+  {
+    label: "Experience",
+    options: [
+      "All Levels",
+      "0-2 Years",
+      "3-5 Years",
+      "5-8 Years",
+      "8+ Years",
+    ],
+  },
 
-  const router = useRouter();
+  {
+    label: "Location",
+    options: [
+      "All Locations",
+      "Bangalore",
+      "Hyderabad",
+      "Remote",
+      "Pune",
+    ],
+  },
 
-  const searchParams =
-    useSearchParams();
+  {
+    label: "Company",
+    options: [
+      "All Companies",
+      "Google",
+      "Meta",
+      "Amazon",
+      "Microsoft",
+      "Netflix",
+    ],
+  },
+];
 
-  const selectedRole =
-    searchParams.get("role") ?? "All";
-
-  const selectedLocation =
-    searchParams.get("location") ?? "All";
-
-  const selectedSort =
-  searchParams.get("sort") ?? "Default";
-  
-  function updateFilters(
-    role: string,
-    location: string,
-    sort: string
-  ) {
-
-    const params =
-      new URLSearchParams();
-
-    if (role !== "All") {
-      params.set("role", role);
-    }
-
-    if (location !== "All") {
-      params.set(
-        "location",
-        location
-      );
-    }
-
-    if (sort !== "Default") {
-      params.set("sort", sort);
-    }
-
-    const query =
-      params.toString();
-    router.push(
-      query
-        ? `/salaries?${query}`
-        : "/salaries"
-    );
-  }
+export function FilterBar({
+  compact = false,
+}: FilterBarProps) {
 
   return (
 
-    <div className="mb-8 flex flex-wrap gap-4">
+    <section
+      className={`mx-auto max-w-7xl px-4 md:px-6 ${
+        compact
+          ? "mt-6"
+          : "mt-10"
+      }`}
+    >
 
-      <select aria-label="Filter by role"
-        value={selectedRole}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+      <div className="rounded-3xl border border-[#F1F1F1] bg-white p-6 shadow-sm">
 
-          updateFilters(
-            event.target.value,
-            selectedLocation,
-            selectedSort
-          )
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
-        }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
-      >
+          {/* LEFT */}
 
-        {roleOptions.map((role) => (
+          <div>
 
-          <option
-            key={role}
-            value={role}
-          >
+            <p className="text-sm font-medium text-[#FF4D8D]">
 
-            {role}
+              Filter Insights
 
-          </option>
+            </p>
 
-        ))}
+            <h2 className="mt-2 text-2xl font-bold">
 
-      </select>
+              Explore salary intelligence
 
-      <select aria-label="Filter by location"
-        value={selectedLocation}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+            </h2>
 
-          updateFilters(
-            selectedRole,
-            event.target.value,
-            selectedSort
-          )
+          </div>
 
-        }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
-      >
+          {/* FILTERS */}
 
-        {locationOptions.map(
-          (location) => (
+          <div className="grid flex-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 
-            <option
-              key={location}
-              value={location}
-            >
+            {filters.map((filter) => (
 
-              {location}
+              <div
+                key={filter.label}
+                className="relative"
+              >
 
-            </option>
+                <label
+                  htmlFor={filter.label}
+                  className="mb-2 block text-xs font-medium uppercase tracking-wide text-[#6B7280]"
+                >
 
-          )
-        )}
+                  {filter.label}
 
-      </select>
+                </label>
 
-      <select aria-label="Sort salaries"
-        value={selectedSort}
-        onChange={(event) =>
+                <select
+                  id={filter.label}
+                  title={filter.label}
+                  aria-label={filter.label}
+                  className="w-full rounded-2xl border border-[#ECECEC] bg-[#FAFAFB] px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-[#FF4D8D] focus:bg-white"
+                >
 
-          updateFilters(
-            selectedRole,
-            selectedLocation,
-            event.target.value
-          )
+                  {filter.options.map(
+                    (option) => (
 
-        }
-        className="rounded-xl border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm outline-none"
-      >
+                      <option
+                        key={option}
+                      >
 
-        {sortOptions.map((sort) => (
+                        {option}
 
-          <option
-            key={sort}
-            value={sort}
-          >
+                      </option>
+                    )
+                  )}
 
-            {sort}
+                </select>
 
-          </option>
+              </div>
+            ))}
 
-        ))}
+          </div>
 
-      </select>
+        </div>
 
-    </div>
+      </div>
+
+    </section>
   );
 }

@@ -1,12 +1,13 @@
-import { clsx } from "clsx";
-
-import { twMerge } from "tailwind-merge";
-
 export function cn(
-  ...inputs: Parameters<typeof clsx>
+  ...classes: (
+    | string
+    | false
+    | null
+    | undefined
+  )[]
 ) {
 
-  return twMerge(
-    clsx(inputs)
-  );
+  return classes
+    .filter(Boolean)
+    .join(" ");
 }

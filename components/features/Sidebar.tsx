@@ -1,20 +1,13 @@
 "use client";
 
 import Link from "next/link";
-
 import { usePathname } from "next/navigation";
 
 const links = [
   {
-    label: "Explore",
+    label: "Overview",
     href: "/",
     icon: "🏠",
-  },
-
-  {
-    label: "Companies",
-    href: "/",
-    icon: "🏢",
   },
 
   {
@@ -25,129 +18,129 @@ const links = [
 
   {
     label: "Reviews",
-    href: "#",
+    href: "/reviews",
     icon: "⭐",
   },
 
   {
-    label: "Interviews",
-    href: "#",
-    icon: "🎯",
+    label: "Compare",
+    href: "/compare",
+    icon: "⚖️",
   },
 
   {
-    label: "Community",
-    href: "#",
-    icon: "💬",
-  },
-
-  {
-    label: "Tools",
-    href: "#",
-    icon: "🛠️",
-  },
-
-  {
-    label: "Workplace Index",
-    href: "#",
-    icon: "📊",
+    label: "Companies",
+    href: "/#companies",
+    icon: "🏢",
   },
 ];
 
 export function Sidebar() {
 
-  const pathname = usePathname();
+  const pathname =
+    usePathname();
 
   return (
 
-    <aside className="hidden w-64 border-r border-[#ECECEC] bg-white xl:flex xl:flex-col">
+    <aside className="sticky top-20 hidden h-fit w-64 shrink-0 xl:block">
 
-      <div className="border-b border-[#ECECEC] p-6">
+      <div className="rounded-3xl border border-[#F1F1F1] bg-white p-5 shadow-sm">
 
-        <div className="flex items-center gap-3">
+        {/* TITLE */}
 
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#FF4D8D] text-white font-bold">
+        <div>
 
-            T
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#FF4D8D]">
 
-          </div>
+            Navigation
 
-          <div>
+          </p>
 
-            <h2 className="font-semibold">
+          <h2 className="mt-2 text-xl font-bold">
 
-              TalentDash
+            TalentDash
 
-            </h2>
-
-            <p className="text-xs text-[#6B7280]">
-
-              Career Intelligence
-
-            </p>
-
-          </div>
+          </h2>
 
         </div>
 
-      </div>
+        {/* LINKS */}
 
-      <nav className="flex-1 space-y-2 p-4">
+        <nav className="mt-6 flex flex-col gap-2">
 
-        {links.map((link) => {
+          {links.map((link) => {
 
-          const active =
-            pathname === link.href;
+            const active =
+              pathname === link.href ||
+              (
+                link.href === "/#companies" &&
+                pathname === "/"
+              );
 
-          return (
+            return (
 
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm transition-all ${
-                active
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                  active
 
-                  ? "bg-[#FFF1F6] text-[#FF4D8D]"
+                    ? "bg-[#FFF1F6] text-[#FF4D8D]"
 
-                  : "text-[#6B7280] hover:bg-[#F9FAFB] hover:text-[#111827]"
-              }`}
-            >
+                    : "text-[#374151] hover:bg-[#FAFAFB]"
+                }`}
+              >
 
-              <span>
-                {link.icon}
-              </span>
+                <span className="text-base transition-transform duration-200 group-hover:scale-110">
 
-              <span>
-                {link.label}
-              </span>
+                  {link.icon}
 
-            </Link>
-          );
-        })}
+                </span>
 
-      </nav>
+                <span>
 
-      <div className="border-t border-[#ECECEC] p-4">
+                  {link.label}
 
-        <div className="rounded-2xl bg-[#FFF5F8] p-4">
+                </span>
 
-          <p className="text-sm font-medium">
+              </Link>
+            );
+          })}
 
-            Upgrade to Pro
+        </nav>
+
+        {/* INSIGHT CARD */}
+
+        <div className="mt-8 rounded-2xl bg-gradient-to-br from-[#FF4D8D] to-[#FF7DB2] p-5 text-white">
+
+          <p className="text-xs font-semibold uppercase tracking-wide text-white/80">
+
+            Career Insights
 
           </p>
 
-          <p className="mt-2 text-xs leading-5 text-[#6B7280]">
+          <h3 className="mt-3 text-lg font-bold leading-snug">
 
-            Unlock advanced salary intelligence and workplace analytics.
+            Compare top engineering companies.
+
+          </h3>
+
+          <p className="mt-3 text-sm leading-6 text-white/90">
+
+            Explore salary benchmarks,
+            workplace culture,
+            and employee experiences.
 
           </p>
 
-          <button className="mt-4 w-full rounded-xl bg-[#FF4D8D] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90">
+          <Link
+            href="/compare"
+            className="mt-5 inline-flex rounded-xl bg-white px-4 py-2 text-sm font-medium text-[#FF4D8D] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm"
+          >
 
-            Go Pro
+            Compare Now →
 
-          </button>
+          </Link>
 
         </div>
 

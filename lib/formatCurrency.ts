@@ -1,17 +1,15 @@
 export function formatCurrency(
-  amount: number,
-  currency: "INR" | "USD"
+  value: number,
+  currency: string = "INR"
 ) {
 
   return new Intl.NumberFormat(
-    currency === "INR"
-      ? "en-IN"
-      : "en-US",
-
+    "en-IN",
     {
       style: "currency",
       currency,
+
       maximumFractionDigits: 0,
     }
-  ).format(amount);
+  ).format(value);
 }

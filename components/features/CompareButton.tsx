@@ -1,108 +1,118 @@
 "use client";
 
-import {
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { useEffect, useState } from "react";
 
-type CompareButtonProps = {
-  companySlug: string;
-};
+interface CompareButtonProps {
+  company: string;
+}
 
 export function CompareButton({
-  companySlug,
+  company,
 }: CompareButtonProps) {
 
-  const router = useRouter();
+  const [added, setAdded] =
+    useState(false);
 
-  const searchParams =
-    useSearchParams();
+  useEffect(() => {
 
-  const selectedCompanies =
-    searchParams
-      .get("companies")
-      ?.split(",")
-      .filter(Boolean) ?? [];
+    const syncState = () => {
 
-  const isSelected =
-    selectedCompanies.includes(
-      companySlug
+      const stored =
+        localStorage.getItem(
+          "compareCompanies"
+        );
+
+      const companies: string[] =
+        stored ? JSON.parse(stored) : [];
+
+      setAdded(
+        companies.includes(company)
+      );
+    };
+
+    syncState();
+
+    window.addEventListener(
+      "compareUpdated",
+      syncState
     );
 
-  function handleCompare() {
+    return () => {
 
-    let updatedCompanies =
-      [...selectedCompanies];
+      window.removeEventListener(
+        "compareUpdated",
+        syncState
+      );
+    };
 
-    if (isSelected) {
+  }, [company]);
 
-      updatedCompanies =
-        updatedCompanies.filter(
-          (company) =>
-            company !== companySlug
+  const handleCompare = (
+    event: React.MouseEvent
+  ) => {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const stored =
+      localStorage.getItem(
+        "compareCompanies"
+      );
+
+    let companies: string[] =
+      stored ? JSON.parse(stored) : [];
+
+    if (companies.includes(company)) {
+
+      companies =
+        companies.filter(
+          (item) =>
+            item !== company
         );
 
     } else {
 
-      if (
-        updatedCompanies.length >= 3
-      ) {
+      if (companies.length >= 2) {
 
-        alert(
-          "You can compare up to 3 companies."
-        );
-
-        return;
+        companies.shift();
       }
 
-      updatedCompanies.push(
-        companySlug
-      );
+      companies.push(company);
     }
 
-    const params =
-      new URLSearchParams(
-        searchParams.toString()
-      );
-
-    if (
-      updatedCompanies.length > 0
-    ) {
-
-      params.set(
-        "companies",
-        updatedCompanies.join(",")
-      );
-
-    } else {
-
-      params.delete(
-        "companies"
-      );
-    }
-
-    router.replace(
-      `/salaries?${params.toString()}`,
-      {
-        scroll: false,
-      }
+    localStorage.setItem(
+      "compareCompanies",
+      JSON.stringify(companies)
     );
-  }
+
+    setAdded(
+      companies.includes(company)
+    );
+
+    window.dispatchEvent(
+      new Event("compareUpdated")
+    );
+  };
 
   return (
 
     <button
       onClick={handleCompare}
-      className={`rounded-lg px-4 py-2 text-sm text-white transition ${
-        isSelected
-          ? "bg-[#16A34A]"
-          : "bg-[#16A34A] hover:-translate-y-0.5 hover:shadow-md"
+      className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm ${
+        added
+
+          ? "border-[#FF4D8D] bg-[#FFF1F6] text-[#FF4D8D]"
+
+          : "border-[#ECECEC] bg-white hover:bg-[#FAFAFB]"
       }`}
+      aria-label={
+        added
+          ? `Remove ${company} from comparison`
+          : `Add ${company} to comparison`
+      }
     >
 
-      {isSelected
-        ? "Added"
-        : "Compare"}
+      {added ? "✓" : "+"}
 
     </button>
   );

@@ -1,27 +1,19 @@
-export type SalaryRecord = {
-  id: string;
-
-  company: string;
-
-  companySlug: string;
-
+export interface Salary {
   role: string;
 
-  level: string;
+  company: string;
 
   location: string;
 
   experience: string;
 
-  baseSalary: number;
+  compensation: string;
 
-  bonus: number;
+  base: string;
 
-  stock: number;
+  bonus: string;
 
-  totalCompensation: number;
+  stock: string;
 
-  currency: "INR" | "USD";
-
-  workType: "Remote" | "Hybrid" | "Onsite";
-};
+  workPolicy: string;
+}

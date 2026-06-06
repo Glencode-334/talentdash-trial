@@ -1,15 +1,23 @@
-export type Company = {
-  name: string;
-
+export interface Company {
   slug: string;
 
-  description: string;
+  name: string;
 
   industry: string;
 
-  headquarters: string;
+  rating: number;
 
   employees: string;
 
-  rating: number;
-};
+  founded: string;
+
+  headquarters: string;
+
+  workPolicy: string;
+
+  salaryRange: string;
+
+  description: string;
+
+  tags: string[];
+}

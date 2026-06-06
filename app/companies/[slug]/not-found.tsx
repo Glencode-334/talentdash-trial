@@ -1,41 +1,99 @@
 import Link from "next/link";
 
-import { Container } from "@/components/ui/Container";
-
-export default function NotFoundPage() {
+export default function CompanyNotFound() {
 
   return (
 
-    <main className="min-h-screen bg-[#F7F7F7] py-20">
+    <main className="flex min-h-[80vh] items-center justify-center bg-[#FCFCFD] px-4 py-16">
 
-      <Container>
+      <div className="w-full max-w-2xl rounded-3xl border border-[#F1F1F1] bg-white px-8 py-12 text-center shadow-sm md:px-12">
 
-        <div className="text-center">
+        {/* ICON */}
 
-          <h1 className="text-5xl font-bold">
+        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#FFF1F6] text-4xl">
 
-            Company Not Found
+          🏢
 
-          </h1>
+        </div>
 
-          <p className="mt-4 text-[#6A6A6A]">
+        {/* TITLE */}
 
-            The requested company profile does not exist.
+        <h1 className="mt-8 text-3xl font-bold tracking-tight md:text-4xl">
 
-          </p>
+          Company profile not found
+
+        </h1>
+
+        {/* DESCRIPTION */}
+
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#6B7280] md:text-base">
+
+          The company profile you are looking for does not exist
+          or may not yet be available in the TalentDash database.
+
+        </p>
+
+        {/* ACTIONS */}
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+
+          <Link
+            href="/"
+            className="rounded-2xl bg-[#FF4D8D] px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90"
+          >
+
+            Back to Homepage
+
+          </Link>
 
           <Link
             href="/salaries"
-            className="mt-8 inline-block rounded-xl bg-black px-6 py-3 text-white"
+            className="rounded-2xl border border-[#ECECEC] bg-white px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-[#FAFAFB]"
           >
 
-            Back to Salaries
+            Explore Salaries
 
           </Link>
 
         </div>
 
-      </Container>
+        {/* SUGGESTIONS */}
+
+        <div className="mt-12 border-t border-[#F3F4F6] pt-8">
+
+          <p className="text-sm font-medium text-[#111827]">
+
+            Popular companies
+
+          </p>
+
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+
+            {[
+              "Google",
+              "Amazon",
+              "Meta",
+              "Microsoft",
+              "Netflix",
+              "Flipkart",
+            ].map((company) => (
+
+              <Link
+                key={company}
+                href={`/companies/${company.toLowerCase()}`}
+                className="rounded-xl border border-[#F1F1F1] bg-[#FAFAFB] px-4 py-2 text-sm font-medium text-[#374151] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"
+              >
+
+                {company}
+
+              </Link>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
 
     </main>
   );

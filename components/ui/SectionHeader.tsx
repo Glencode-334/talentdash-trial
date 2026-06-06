@@ -1,31 +1,102 @@
-type SectionHeaderProps = {
+import { ReactNode } from "react";
+
+interface SectionHeaderProps {
+  eyebrow?: string;
+
   title: string;
+
   description?: string;
-};
+
+  action?: ReactNode;
+
+  centered?: boolean;
+
+  compact?: boolean;
+}
 
 export function SectionHeader({
+  eyebrow,
   title,
   description,
+  action,
+  centered = false,
+  compact = false,
 }: SectionHeaderProps) {
 
   return (
 
-    <div className="mb-10">
+    <div
+      className={`
+        flex
+        flex-col
+        gap-5
+        md:flex-row
+        md:items-end
+        md:justify-between
+        ${
+          compact
+            ? "mb-6"
+            : "mb-8"
+        }
+        ${
+          centered
+            ? "items-center text-center"
+            : ""
+        }
+      `}
+    >
 
-      <h1 className="text-5xl font-bold tracking-tight text-[#222222]">
+      {/* LEFT */}
 
-        {title}
+      <div
+        className={
+          centered
+            ? "max-w-3xl"
+            : "max-w-2xl"
+        }
+      >
 
-      </h1>
+        {/* EYEBROW */}
 
-      {description && (
+        {eyebrow && (
 
-        <p className="mt-4 max-w-2xl text-lg text-[#6A6A6A]">
+          <p className="text-sm font-medium text-[#FF4D8D]">
 
-          {description}
+            {eyebrow}
 
-        </p>
+          </p>
+        )}
 
+        {/* TITLE */}
+
+        <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+
+          {title}
+
+        </h2>
+
+        {/* DESCRIPTION */}
+
+        {description && (
+
+          <p className="mt-4 text-sm leading-7 text-[#6B7280] md:text-base">
+
+            {description}
+
+          </p>
+        )}
+
+      </div>
+
+      {/* RIGHT ACTION */}
+
+      {action && (
+
+        <div className="shrink-0">
+
+          {action}
+
+        </div>
       )}
 
     </div>

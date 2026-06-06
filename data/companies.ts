@@ -1,191 +1,392 @@
-import { Company } from "@/types/company";
-
+import type { Company } from "@/types/company";
 export const companies: Company[] = [
   {
-    name: "Google",
     slug: "google",
-    description:
-      "Google is a global technology company specializing in internet services, AI, and cloud computing.",
+
+    name: "Google",
 
     industry: "Technology",
-
-    headquarters: "Mountain View, California",
-
-    employees: "180,000+",
 
     rating: 4.8,
+
+    employees: "180K+",
+
+    founded: "1998",
+
+    headquarters: "Mountain View",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹32L - ₹82L",
+
+    description:
+      "Global technology company known for engineering excellence, innovation, and strong compensation.",
+
+    tags: [
+      "AI",
+      "Cloud",
+      "Search",
+      "Android",
+    ],
   },
 
   {
-    name: "Amazon",
     slug: "amazon",
-    description:
-      "Amazon is a multinational technology company focused on e-commerce, cloud computing, and AI.",
 
-    industry: "Technology",
-
-    headquarters: "Seattle, Washington",
-
-    employees: "1.5M+",
-
-    rating: 4.2,
-  },
-
-  {
-    name: "Meta",
-    slug: "meta",
-    description:
-      "Meta builds social technologies and platforms focused on communication and virtual experiences.",
-
-    industry: "Technology",
-
-    headquarters: "Menlo Park, California",
-
-    employees: "67,000+",
-
-    rating: 4.5,
-  },
-
-  {
-    name: "Microsoft",
-    slug: "microsoft",
-    description:
-      "Microsoft develops enterprise software, cloud platforms, and AI-powered productivity tools.",
-
-    industry: "Technology",
-
-    headquarters: "Redmond, Washington",
-
-    employees: "220,000+",
-
-    rating: 4.7,
-  },
-  
-  {
-    name: "Netflix",
-    slug: "netflix",
-
-    description:
-      "Netflix is a global streaming and entertainment technology company.",
-
-    industry: "Entertainment Technology",
-
-    headquarters: "Los Gatos, California",
-
-    employees: "13,000+",
-
-    rating: 4.6,
-  },
-
-  {
-    name: "Atlassian",
-    slug: "atlassian",
-
-    description:
-      "Atlassian develops collaboration and productivity software for modern engineering teams.",
-
-    industry: "Software",
-
-    headquarters: "Sydney, Australia",
-
-    employees: "11,000+",
-
-    rating: 4.5,
-  },
-
-  {
-    name: "Adobe",
-    slug: "adobe",
-
-    description:
-      "Adobe builds creative, marketing, and document management software products.",
-
-    industry: "Software",
-
-    headquarters: "San Jose, California",
-
-    employees: "30,000+",
-
-    rating: 4.4,
-  },
-
-  {
-    name: "Uber",
-    slug: "uber",
-
-    description:
-      "Uber is a mobility and logistics technology platform operating globally.",
-
-    industry: "Mobility Technology",
-
-    headquarters: "San Francisco, California",
-
-    employees: "32,000+",
-
-    rating: 4.3,
-  },
-
-  {
-    name: "Flipkart",
-    slug: "flipkart",
-
-    description:
-      "Flipkart is one of India’s largest e-commerce and digital commerce platforms.",
+    name: "Amazon",
 
     industry: "E-Commerce",
 
-    headquarters: "Bangalore, India",
+    rating: 4.3,
 
-    employees: "22,000+",
+    employees: "1.5M+",
+
+    founded: "1994",
+
+    headquarters: "Seattle",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹28L - ₹74L",
+
+    description:
+      "Fast-paced engineering culture with large-scale distributed systems and strong hiring demand.",
+
+    tags: [
+      "AWS",
+      "Scale",
+      "Logistics",
+      "Cloud",
+    ],
+  },
+
+  {
+    slug: "meta",
+
+    name: "Meta",
+
+    industry: "Social Media",
+
+    rating: 4.6,
+
+    employees: "86K+",
+
+    founded: "2004",
+
+    headquarters: "Menlo Park",
+
+    workPolicy: "Remote Friendly",
+
+    salaryRange: "₹30L - ₹78L",
+
+    description:
+      "High-impact engineering environment focused on scale, AI, and immersive experiences.",
+
+    tags: [
+      "AI",
+      "Social",
+      "VR",
+      "Infra",
+    ],
+  },
+
+  {
+    slug: "microsoft",
+
+    name: "Microsoft",
+
+    industry: "Technology",
+
+    rating: 4.7,
+
+    employees: "220K+",
+
+    founded: "1975",
+
+    headquarters: "Redmond",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹26L - ₹72L",
+
+    description:
+      "Strong work-life balance with enterprise-scale engineering and cloud innovation.",
+
+    tags: [
+      "Azure",
+      "Enterprise",
+      "Cloud",
+      "AI",
+    ],
+  },
+
+  {
+    slug: "netflix",
+
+    name: "Netflix",
+
+    industry: "Streaming",
+
+    rating: 4.5,
+
+    employees: "13K+",
+
+    founded: "1997",
+
+    headquarters: "Los Gatos",
+
+    workPolicy: "Remote Friendly",
+
+    salaryRange: "₹40L - ₹1Cr+",
+
+    description:
+      "Premium compensation and high-performance engineering culture focused on ownership.",
+
+    tags: [
+      "Streaming",
+      "Distributed Systems",
+      "Platform",
+      "Performance",
+    ],
+  },
+
+  {
+    slug: "flipkart",
+
+    name: "Flipkart",
+
+    industry: "E-Commerce",
 
     rating: 4.2,
+
+    employees: "35K+",
+
+    founded: "2007",
+
+    headquarters: "Bangalore",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹22L - ₹48L",
+
+    description:
+      "Leading Indian e-commerce platform with large-scale logistics and engineering systems.",
+
+    tags: [
+      "E-Commerce",
+      "Logistics",
+      "Marketplace",
+      "Payments",
+    ],
   },
 
   {
-    name: "Swiggy",
     slug: "swiggy",
 
-    description:
-      "Swiggy is an Indian food delivery and quick-commerce technology platform.",
+    name: "Swiggy",
 
-    industry: "Food Delivery & Quick Commerce",
-
-    headquarters: "Bangalore, India",
-
-    employees: "6,000+",
+    industry: "Food Delivery",
 
     rating: 4.1,
+
+    employees: "12K+",
+
+    founded: "2014",
+
+    headquarters: "Bangalore",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹18L - ₹42L",
+
+    description:
+      "Fast-growing food delivery and logistics company with strong backend infrastructure.",
+
+    tags: [
+      "Delivery",
+      "Logistics",
+      "Realtime",
+      "Mobility",
+    ],
   },
 
   {
-    name: "Zomato",
     slug: "zomato",
 
-    description:
-      "Zomato is a restaurant discovery and food delivery technology company operating globally.",
+    name: "Zomato",
 
-    industry: "Food Technology",
-
-    headquarters: "Gurgaon, India",
-
-    employees: "5,000+",
+    industry: "Food Delivery",
 
     rating: 4.0,
+
+    employees: "8K+",
+
+    founded: "2008",
+
+    headquarters: "Gurgaon",
+
+    workPolicy: "Remote Friendly",
+
+    salaryRange: "₹18L - ₹40L",
+
+    description:
+      "Consumer-focused engineering company specializing in food-tech and discovery platforms.",
+
+    tags: [
+      "FoodTech",
+      "Discovery",
+      "Delivery",
+      "Platform",
+    ],
   },
 
   {
-    name: "Razorpay",
-    slug: "razorpay",
+    slug: "uber",
 
-    description:
-      "Razorpay provides digital payments and financial infrastructure solutions.",
+    name: "Uber",
 
-    industry: "Fintech",
-
-    headquarters: "Bangalore, India",
-
-    employees: "3,000+",
+    industry: "Mobility",
 
     rating: 4.4,
+
+    employees: "32K+",
+
+    founded: "2009",
+
+    headquarters: "San Francisco",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹28L - ₹76L",
+
+    description:
+      "Global mobility platform with strong distributed systems and marketplace engineering.",
+
+    tags: [
+      "Mobility",
+      "Realtime",
+      "Maps",
+      "Marketplace",
+    ],
+  },
+
+  {
+    slug: "airbnb",
+
+    name: "Airbnb",
+
+    industry: "Travel",
+
+    rating: 4.6,
+
+    employees: "7K+",
+
+    founded: "2008",
+
+    headquarters: "San Francisco",
+
+    workPolicy: "Remote First",
+
+    salaryRange: "₹30L - ₹72L",
+
+    description:
+      "Travel and hospitality platform with strong design and engineering culture.",
+
+    tags: [
+      "Travel",
+      "Marketplace",
+      "Design",
+      "Platform",
+    ],
+  },
+
+  {
+    slug: "linkedin",
+
+    name: "LinkedIn",
+
+    industry: "Professional Networking",
+
+    rating: 4.5,
+
+    employees: "21K+",
+
+    founded: "2002",
+
+    headquarters: "Sunnyvale",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹26L - ₹64L",
+
+    description:
+      "Professional networking platform with strong data and recommendation systems.",
+
+    tags: [
+      "Social",
+      "Professional",
+      "Data",
+      "AI",
+    ],
+  },
+
+  {
+    slug: "adobe",
+
+    name: "Adobe",
+
+    industry: "Software",
+
+    rating: 4.7,
+
+    employees: "29K+",
+
+    founded: "1982",
+
+    headquarters: "San Jose",
+
+    workPolicy: "Hybrid",
+
+    salaryRange: "₹24L - ₹68L",
+
+    description:
+      "Creative software company with strong engineering culture and product innovation.",
+
+    tags: [
+      "Creative",
+      "Design",
+      "Cloud",
+      "Media",
+    ],
+  },
+
+  {
+    slug: "salesforce",
+
+    name: "Salesforce",
+
+    industry: "Cloud Software",
+
+    rating: 4.4,
+
+    employees: "79K+",
+
+    founded: "1999",
+
+    headquarters: "San Francisco",
+
+    workPolicy: "Remote Friendly",
+
+    salaryRange: "₹24L - ₹60L",
+
+    description:
+      "Enterprise cloud software company focused on CRM and scalable SaaS products.",
+
+    tags: [
+      "CRM",
+      "Enterprise",
+      "Cloud",
+      "SaaS",
+    ],
   },
 ];

@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/features/Sidebar";
-import { Navbar } from "@/components/features/Navbar";
-import { Footer } from "@/components/features/Footer";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { Navbar } from "@/components/features/Navbar";
+import { Footer } from "@/components/features/Footer";
+import { FloatingCompare } from "@/components/features/FloatingCompare";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata = {
+export const metadata: Metadata = {
 
   title: {
     default: "TalentDash",
@@ -23,46 +14,61 @@ export const metadata = {
   },
 
   description:
-    "Explore salary intelligence, compensation insights, and workplace analytics from top technology companies.",
+    "Modern career intelligence platform for salaries, company reviews, interviews, and workplace insights.",
 
-  openGraph: {
+  keywords: [
+    "TalentDash",
+    "Salaries",
+    "Company Reviews",
+    "Engineering Jobs",
+    "Workplace Insights",
+    "Compare Companies",
+  ],
 
-    title: "TalentDash",
-
-    description:
-      "Explore salary intelligence and workplace insights.",
-
-    type: "website",
-  },
-
-  twitter: {
-
-    card: "summary_large_image",
-
-    title: "TalentDash",
-
-    description:
-      "Explore salary intelligence and workplace insights.",
-  },
+  metadataBase: new URL(
+    "https://talentdash-trial-rose.vercel.app"
+  ),
 };
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: RootLayoutProps) {
+
   return (
+
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">
-        <>
-          <Navbar />
+
+      <body className="min-h-screen bg-[#FCFCFD] text-[#111827]">
+
+        {/* NAVBAR */}
+
+        <Navbar />
+
+        {/* PAGE */}
+
+        <div className="relative">
+
           {children}
-          <Footer />
-        </>
+
+        </div>
+
+        {/* FLOATING COMPARE */}
+
+        <FloatingCompare />
+
+        {/* FOOTER */}
+
+        <Footer />
+
       </body>
+
     </html>
   );
 }
