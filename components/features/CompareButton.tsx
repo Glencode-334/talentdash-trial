@@ -13,6 +13,12 @@ export function CompareButton({
   const [added, setAdded] =
     useState(false);
 
+  const [companiesLength, setCompaniesLength] =
+    useState(0);
+
+  const [showToast, setShowToast] =
+    useState(false);
+
   useEffect(() => {
 
     const syncState = () => {
@@ -27,6 +33,10 @@ export function CompareButton({
 
       setAdded(
         companies.includes(company)
+      );
+
+      setCompaniesLength(
+        companies.length
       );
     };
 
@@ -72,9 +82,17 @@ export function CompareButton({
 
     } else {
 
-      if (companies.length >= 2) {
+      if (companies.length >= 3) {
 
-        companies.shift();
+        setShowToast(true);
+
+        setTimeout(() => {
+
+          setShowToast(false);
+
+        }, 2500);
+
+        return;
       }
 
       companies.push(company);
@@ -89,6 +107,10 @@ export function CompareButton({
       companies.includes(company)
     );
 
+    setCompaniesLength(
+      companies.length
+    );
+
     window.dispatchEvent(
       new Event("compareUpdated")
     );
@@ -96,24 +118,37 @@ export function CompareButton({
 
   return (
 
-    <button
-      onClick={handleCompare}
-      className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm ${
-        added
+    <>
+      <button
+        onClick={handleCompare}
+        className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm ${
+          added
 
-          ? "border-[#FF4D8D] bg-[#FFF1F6] text-[#FF4D8D]"
+            ? "border-[#FF4D8D] bg-[#FFF1F6] text-[#FF4D8D]"
 
-          : "border-[#ECECEC] bg-white hover:bg-[#FAFAFB]"
-      }`}
-      aria-label={
-        added
-          ? `Remove ${company} from comparison`
-          : `Add ${company} to comparison`
-      }
-    >
+            : "border-[#ECECEC] bg-white hover:bg-[#FAFAFB]"
+        }`}
+        aria-label={
+          added
+            ? `Remove ${company} from comparison`
+            : `Add ${company} to comparison`
+        }
+      >
 
-      {added ? "✓" : "+"}
+        {added ? "✓" : "+"}
 
-    </button>
+      </button>
+
+      {/* TOAST */}
+
+      {showToast && (
+
+        <div className="pointer-events-none fixed top-24 left-1/2 z-[999] w-fit -translate-x-1/2 rounded-2xl bg-[#111827] px-5 py-3 text-sm font-medium text-white shadow-2xl">
+
+          You can compare up to 3 companies only.
+
+        </div>
+      )}
+    </>
   );
 }

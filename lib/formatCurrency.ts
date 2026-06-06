@@ -1,15 +1,31 @@
 export function formatCurrency(
-  value: number,
-  currency: string = "INR"
+  value: string,
+  currency: string
 ) {
 
-  return new Intl.NumberFormat(
-    "en-IN",
-    {
-      style: "currency",
-      currency,
+  const numericValue =
+    Number(
+      value
+        .replace("₹", "")
+        .replace("$", "")
+        .replace("L", "")
+        .replace("K", "")
+        .replace("+", "")
+    );
 
-      maximumFractionDigits: 0,
-    }
-  ).format(value);
+  /* INR FORMAT */
+
+  if (currency === "inr") {
+
+    return `₹${numericValue}L`;
+  }
+
+  /* USD FORMAT */
+
+  const usdValue =
+    Math.round(
+      numericValue * 1.2
+    );
+
+  return `$${usdValue}K`;
 }

@@ -1,22 +1,16 @@
 # TalentDash
 
-TalentDash is a modern career intelligence platform built with Next.js 16, TypeScript, and Tailwind CSS.
+TalentDash is a modern salary intelligence and company insights platform built with Next.js 16, TypeScript, and Tailwind CSS.
 
-The platform helps users explore:
+The platform helps users explore engineering salaries, workplace insights, compensation benchmarks, and company comparisons through a recruiter-grade frontend experience inspired by platforms like Levels.fyi, Glassdoor, and AmbitionBox.
 
-* engineering salaries
-* company reviews
-* workplace insights
-* compensation benchmarks
-* company comparisons
-
-Inspired by modern product ecosystems like Glassdoor, Levels.fyi, and AmbitionBox, TalentDash focuses on polished UI/UX, scalable architecture, and responsive product design.
+The project focuses on scalable frontend architecture, polished product UX, SEO best practices, and URL-driven application state.
 
 ---
 
 # Live Demo
 
-Deploy Link:
+Live Application:
 https://talentdash-trial-rose.vercel.app/
 
 GitHub Repository:
@@ -26,43 +20,64 @@ https://github.com/Glencode-334/talentdash-trial
 
 # Features
 
-## Explore Companies
-
-* Browse top engineering companies
-* Company overview pages
-* Workplace insights
-* Salary ranges
-* Engineering culture information
-
 ## Salary Intelligence
 
-* Compensation benchmarks
-* Salary comparison tables
-* Popular engineering roles
-* Experience-based salary insights
+* Filterable salary intelligence table
+* Debounced company and role search
+* URL-synced filters and sorting
+* Pagination with shareable URLs
+* Currency toggle (INR ↔ USD)
+* Experience-level compensation insights
+* Empty-state handling
+* Active filter chips and clear-all workflow
 
-## Company Reviews
+---
 
-* Employee review sections
-* Workplace culture highlights
-* Work-life balance insights
-* Career growth analysis
+## Company Profiles
 
-## Compare Companies
+* Dynamic company pages using App Router
+* Static generation with `generateStaticParams`
+* Compensation overview sections
+* Workplace and hiring insights
+* Work policy information
+* Compare CTA integration
+* Loading and not-found states
+
+---
+
+## Company Comparison System
 
 * Side-by-side company comparison
-* Compare compensation
-* Compare work policies
-* Compare ratings and company insights
+* Compare compensation and workplace policies
 * Persistent compare flow using localStorage
+* Floating compare widget
+* Compare limit handling
+* Clear/remove compare actions
 
-## Responsive Product Experience
+---
 
-* Mobile responsive layouts
-* Sticky navigation
-* Floating compare workflow
-* Loading skeletons
-* Smooth interactions and transitions
+## Product Experience
+
+* Responsive mobile-first layouts
+* Sticky navigation system
+* Marketplace-style company cards
+* SaaS-inspired UI design
+* Smooth filtering interactions
+* Product-style dashboard layouts
+* Reusable loading skeletons
+* Persistent URL state management
+
+---
+
+# SEO & Performance
+
+* App Router architecture
+* Static Site Generation (SSG)
+* Open Graph metadata
+* Canonical URLs
+* JSON-LD structured data
+* Production-optimized build
+* Type-safe scalable architecture
 
 ---
 
@@ -72,8 +87,8 @@ https://github.com/Glencode-334/talentdash-trial
 * TypeScript
 * Tailwind CSS
 * React 19
+* ESLint
 * LocalStorage state persistence
-* Responsive UI architecture
 
 ---
 
@@ -90,6 +105,9 @@ Reusable components were created for:
 * Filters
 * Floating Compare
 * Company Grid
+* Navigation System
+
+---
 
 ## Centralized Data Layer
 
@@ -98,12 +116,16 @@ Project data is organized into:
 * `data/companies.ts`
 * `data/salaries.ts`
 
-## Centralized Types
+---
+
+## Shared Type Models
 
 Reusable TypeScript models:
 
 * `types/company.ts`
 * `types/salary.ts`
+
+---
 
 ## Shared Utilities
 
@@ -119,34 +141,13 @@ Utility helpers:
 ```bash
 app/
 components/
+  features/
+  ui/
 config/
 data/
 lib/
 types/
 ```
-
----
-
-# Key UI/UX Improvements
-
-* Recruiter-aligned homepage redesign
-* Marketplace-style company cards
-* Premium gradients and glass effects
-* Improved responsive behavior
-* Consistent spacing and typography system
-* Enhanced compare workflow
-* Reusable loading skeletons
-* Product-style dashboard experience
-
----
-
-# Performance
-
-* Static generation enabled
-* Optimized production build
-* Type-safe architecture
-* Responsive across devices
-* Modular scalable component structure
 
 ---
 
@@ -164,26 +165,56 @@ npm install
 npm run dev
 ```
 
-## Production build
+## Create production build
 
 ```bash
 npm run build
 ```
 
+## Start production server
+
+```bash
+npm run start
+```
+
+---
+
+# Architecture & Product Goals
+
+TalentDash was designed to:
+
+* simulate a modern salary intelligence platform
+* demonstrate scalable frontend architecture
+* showcase recruiter-grade product UX
+* implement SEO-first App Router patterns
+* prioritize reusable and maintainable systems
+* reflect real-world frontend engineering practices
+
+---
+
+# Performance
+
+* Static optimization enabled
+* Production build verified
+* Responsive across device sizes
+* Optimized App Router rendering
+* Lightweight scalable architecture
+
 ---
 
 # Future Improvements
 
-* Authentication
+* Authentication system
 * Real backend integration
-* Search functionality
-* Dynamic filtering
-* Charts and analytics
+* Salary trend analytics
+* Interactive charts
 * Job listings
-* Community discussions
+* User-generated reviews
+* Saved comparisons
+* Advanced search capabilities
 
 ---
 
 # Author
 
-Built as part of the TalentDash UI/UX engineering challenge using modern frontend architecture and scalable product design principles.
+Built as part of the TalentDash UI/UX engineering challenge using modern frontend architecture, scalable product systems, and recruiter-oriented frontend engineering practices.

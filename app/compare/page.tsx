@@ -25,7 +25,12 @@ export default function ComparePage() {
           "compareCompanies"
         );
 
-      if (!stored) return;
+      if (!stored) {
+
+        setSelectedCompanies([]);
+
+        return;
+      }
 
       const parsed: string[] =
         JSON.parse(stored);

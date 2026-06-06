@@ -33,7 +33,8 @@ const links = [
 
 export function Navbar() {
 
-  const pathname = usePathname();
+  const pathname =
+    usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
@@ -55,7 +56,11 @@ export function Navbar() {
             className="flex items-center gap-3"
           >
 
-            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-[#FF4D8D] to-[#FF7DB2]" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF4D8D] to-[#FF7DB2] text-sm font-bold text-white shadow-sm">
+
+              TD
+
+            </div>
 
             <div className="hidden sm:block">
 
@@ -76,11 +81,7 @@ export function Navbar() {
             {links.map((link) => {
 
               const active =
-                pathname === link.href ||
-                (
-                  link.href === "/#companies" &&
-                  pathname === "/"
-                );
+                pathname === link.href;
 
               return (
 
@@ -130,7 +131,7 @@ export function Navbar() {
 
           </button>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE MENU */}
 
           <button
             onClick={() =>
@@ -177,11 +178,7 @@ export function Navbar() {
             {links.map((link) => {
 
               const active =
-                pathname === link.href ||
-                (
-                  link.href === "/#companies" &&
-                  pathname === "/"
-                );
+                pathname === link.href;
 
               return (
 
